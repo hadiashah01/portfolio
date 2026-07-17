@@ -27,8 +27,8 @@ export const projects: Project[] = [
       "Strong content hierarchy improves clarity for recruiters and clients",
     ],
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    githubUrl: "https://github.com/TODO/portfolio",
-    demoUrl: "TODO",
+    githubUrl: "https://github.com/hadia/portfolio",
+    demoUrl: "",
     featured: true,
     image: "/images/projects/portfolio-placeholder.jpg",
   },
@@ -46,8 +46,8 @@ export const projects: Project[] = [
       "Small interaction states can make dense data feel approachable",
     ],
     technologies: ["React", "TypeScript", "Tailwind CSS"],
-    githubUrl: "https://github.com/TODO/user-directory",
-    demoUrl: "TODO",
+    githubUrl: "https://github.com/hadia/user-directory",
+    demoUrl: "",
     featured: true,
     image: "/images/projects/user-directory-placeholder.jpg",
   },
@@ -65,29 +65,11 @@ export const projects: Project[] = [
       "Balanced whitespace helps products feel more premium",
     ],
     technologies: ["React", "CSS Modules"],
-    githubUrl: "https://github.com/TODO/kitchen-garden",
-    demoUrl: "TODO",
+    githubUrl: "https://github.com/hadia/kitchen-garden",
+    demoUrl: "",
     featured: false,
     image: "/images/projects/kitchen-garden-placeholder.jpg",
   },
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
-export const skillCategories = [
-  {
-    title: "Languages",
-    skills: ["HTML", "CSS", "JavaScript", "TypeScript"],
-  },
-  {
-    title: "Frontend",
-    skills: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    title: "Backend",
-    skills: ["Prisma", "Supabase", "REST APIs"],
-  },
-  {
-    title: "Tools",
-    skills: ["Git", "Vercel", "Figma", "Accessibility Audits"],
-  },
-];

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 
+import { personal } from "@/config/personal";
 import { siteConfig } from "@/config/site";
 
 type BuildMetadataOptions = {
@@ -45,6 +46,15 @@ export function buildMetadata({
       : { index: true, follow: true },
   };
 }
+
+export const metadataDefaults = {
+  title: siteConfig.title,
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  author: personal.name,
+  siteName: siteConfig.name,
+  themeColor: siteConfig.themeColor,
+};
 
 export const siteViewport: Viewport = {
   themeColor: [

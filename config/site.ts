@@ -1,8 +1,9 @@
+import { personal } from "@/config/personal";
+
 export const siteConfig = {
-  name: "Hadia",
-  title: "Hadia | Frontend Developer",
-  description:
-    "Portfolio of a frontend-focused developer building accessible, modern web applications with Next.js, TypeScript, and thoughtful UI.",
+  name: personal.name,
+  title: `${personal.name} | ${personal.professionalTitle}`,
+  description: personal.tagline,
   keywords: [
     "frontend developer",
     "next.js",
@@ -10,7 +11,7 @@ export const siteConfig = {
     "portfolio",
     "accessibility",
   ],
-  author: "Hadia",
+  author: personal.name,
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   locale: "en_US",
   themeColor: "#0f4c5c",
@@ -19,9 +20,9 @@ export const siteConfig = {
     twitterCard: "summary_large_image",
   },
   links: {
-    github: "https://github.com/TODO",
-    linkedin: "https://www.linkedin.com/in/TODO",
-    email: "mailto:TODO@example.com",
+    github: personal.github,
+    linkedin: personal.linkedin,
+    email: `mailto:${personal.email}`,
   },
 } as const;
 

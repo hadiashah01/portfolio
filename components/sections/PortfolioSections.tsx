@@ -87,7 +87,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               GitHub
             </Link>
           ) : null}
-          {project.demoUrl && project.demoUrl !== "TODO" ? (
+          {project.demoUrl ? (
             <Link
               href={project.demoUrl}
               target="_blank"

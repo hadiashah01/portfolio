@@ -12,7 +12,7 @@ export const journeyMilestones = [
       "Connected UI work to APIs, data flow, and production-ready architecture.",
   },
   {
-    year: "TODO",
+    year: "2026",
     title: "Continuing to grow",
     description:
       "New milestones will be added here as projects and learning goals evolve.",

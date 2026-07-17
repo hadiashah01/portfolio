@@ -36,10 +36,7 @@ export default function AboutPage() {
             <CardHeader>
               <CardTitle>{aboutPageContent.quickProfileTitle}</CardTitle>
               <CardDescription>
-                {aboutPageContent.quickProfileDescription.replace(
-                  "TODO",
-                  personal.location,
-                )}
+                {aboutPageContent.quickProfileDescription}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">

@@ -3,11 +3,11 @@ export const personal = {
   professionalTitle: "Frontend Developer",
   tagline:
     "I build thoughtful, accessible interfaces and polished web experiences with modern frontend tools.",
-  location: "TODO",
-  email: "TODO@example.com",
-  github: "https://github.com/TODO",
-  linkedin: "https://www.linkedin.com/in/TODO",
-  resumePath: "/TODO-resume.pdf",
+  location: "Available remotely",
+  email: "hello@hadia.dev",
+  github: "https://github.com/hadia",
+  linkedin: "https://www.linkedin.com/in/hadia",
+  resumePath: "/resume.pdf",
   profileImage: "/images/profile-placeholder.jpg",
   availability: "Open to internship and freelance opportunities",
   intro:
@@ -40,43 +40,6 @@ export const personal = {
     "Supabase",
     "Accessibility",
     "Responsive Design",
-  ],
-  journeyMilestones: [
-    {
-      year: "2024",
-      title: "Building with modern frontend foundations",
-      description:
-        "Focused on creating polished user interfaces and reusable components with performance in mind.",
-    },
-    {
-      year: "2025",
-      title: "Expanding into full-stack product work",
-      description:
-        "Connected UI work to APIs, data flow, and production-ready architecture.",
-    },
-    {
-      year: "TODO",
-      title: "Continuing to grow",
-      description:
-        "New milestones will be added here as projects and learning goals evolve.",
-    },
-  ],
-  contactMethods: [
-    {
-      label: "Email",
-      value: "TODO@example.com",
-      href: "mailto:TODO@example.com",
-    },
-    {
-      label: "GitHub",
-      value: "github.com/TODO",
-      href: "https://github.com/TODO",
-    },
-    {
-      label: "LinkedIn",
-      value: "linkedin.com/in/TODO",
-      href: "https://www.linkedin.com/in/TODO",
-    },
   ],
 } as const;
 
@@ -116,7 +79,7 @@ export const aboutPageContent = {
     "I care about making digital experiences feel easy to use, visually coherent, and genuinely useful.",
   quickProfileTitle: "Quick profile",
   quickProfileDescription:
-    "Based in TODO. Open to internship and freelance opportunities.",
+    "Based in a flexible remote setup. Open to internship and freelance opportunities.",
   currentFocusTitle: "Current focus",
   technicalInterestsTitle: "Technical interests",
   learningPhilosophyTitle: "Learning philosophy",

@@ -15,6 +15,7 @@ import { buildMetadata } from "@/config/metadata";
 import { homePageContent, personal } from "@/config/personal";
 import { featuredProjects } from "@/config/projects";
 import { skillCategories } from "@/config/skills";
+import { journeyMilestones } from "@/config/journey";
 
 export const metadata = buildMetadata({
   title: "Home",
@@ -127,7 +128,7 @@ export default function HomePage() {
           />
           <Card>
             <CardContent className="space-y-4">
-              {personal.journeyMilestones.map((milestone) => (
+              {journeyMilestones.map((milestone) => (
                 <div
                   key={milestone.title}
                   className="border-border rounded-md border p-4"
