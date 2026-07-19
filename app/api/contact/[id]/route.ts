@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/auth";
-import { ContactStatus } from "@prisma/client";
+
+type ContactStatus = "unread" | "read" | "responded" | "archived";
 
 export async function PATCH(
   request: Request,
