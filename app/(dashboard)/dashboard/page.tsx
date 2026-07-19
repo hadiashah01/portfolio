@@ -1,3 +1,4 @@
+import type { ContactMessage } from "@prisma/client";
 import { requireAdmin } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
@@ -24,7 +25,7 @@ export default async function DashboardPage() {
     },
   });
 
-  const recentMessages = await prisma.contactMessage.findMany({
+  const recentMessages: ContactMessage[] = await prisma.contactMessage.findMany({
     orderBy: { createdAt: "desc" },
     take: 5,
   });
