@@ -49,7 +49,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/hadiashah01/user-directory",
     demoUrl: "https://hadiashah01.github.io/user-directory/",
     featured: true,
-    image: "/images/projects/user-directory-placeholder.jpg",
+    image: "/images/projects/user-directory.png",
   },
   {
     slug: "bbc-news-homepage-clone",
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/hadiashah01/bbc-news-homepage-clone",
     demoUrl: "https://hadiashah01.github.io/bbc-news-homepage-clone/",
     featured: true,
-    image: "/images/projects/bbc-news-placeholder.jpg",
+    image: "/images/projects/bbc-news-homepage-clone.png",
   },
   {
     slug: "the-kitchen-garden",
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/hadiashah01/the-kitchen-garden",
     demoUrl: "https://hadiashah01.github.io/the-kitchen-garden/",
     featured: true,
-    image: "/images/projects/kitchen-garden-placeholder.jpg",
+    image: "/images/projects/the-kitchen-garden.png",
   },
   {
     slug: "winter-world-clone",
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/hadiashah01/winterworld-lahore-clone",
     demoUrl: "https://hadiashah01.github.io/winterworld-lahore-clone/",
     featured: true,
-    image: "/images/projects/winter-world-placeholder.jpg",
+    image: "/images/projects/winterworld-lahore-clone.png",
   },
   {
     slug: "whatsapp-business-clone",

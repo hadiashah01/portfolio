@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Github, Mail, Linkedin, Phone } from "lucide-react";
 
@@ -42,67 +43,85 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const hasImage = project.image && !project.image.includes("placeholder");
+
   return (
-    <Card className="h-full">
-      <CardHeader>
-        <div className="flex flex-wrap items-center gap-2">
-          {project.featured ? <Badge variant="filled">Featured</Badge> : null}
-          <Badge variant="soft">{project.technologies[0]}</Badge>
-        </div>
-        <CardTitle>{project.title}</CardTitle>
-        <CardDescription>{project.description}</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="space-y-3">
-          <div>
-            <p className="text-foreground text-sm font-semibold">Problem</p>
-            <p className="text-muted-foreground text-sm">{project.problem}</p>
+    <Card className="h-auto self-start">
+      <div className=" space-y-4   ">
+        {hasImage && (
+          <div className="border-border group relative overflow-hidden rounded-md border">
+            <Image
+              src={project.image}
+              alt={`${project.title} screenshot`}
+              width={800}
+              height={450}
+              className="h-auto w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
+            />
           </div>
-          <div>
-            <p className="text-foreground text-sm font-semibold">Solution</p>
-            <p className="text-muted-foreground text-sm">{project.solution}</p>
+        ) }
+
+        <CardHeader>
+          <div className="flex flex-wrap items-center gap-2">
+            {project.featured ? <Badge variant="filled">Featured</Badge> : null}
+            <Badge variant="soft">{project.technologies[0]}</Badge>
           </div>
-        </div>
+          <CardTitle>{project.title}</CardTitle>
+          <CardDescription>{project.description}</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="space-y-3">
+            <div>
+              <p className="text-foreground text-sm font-semibold">Problem</p>
+              <p className="text-muted-foreground text-sm">{project.problem}</p>
+            </div>
+            <div>
+              <p className="text-foreground text-sm font-semibold">Solution</p>
+              <p className="text-muted-foreground text-sm">
+                {project.solution}
+              </p>
+            </div>
+          </div>
 
-        <div className="flex flex-wrap gap-2">
-          {project.technologies.map((technology) => (
-            <Badge key={technology} variant="outline">
-              {technology}
-            </Badge>
-          ))}
-        </div>
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.map((technology) => (
+              <Badge key={technology} variant="outline">
+                {technology}
+              </Badge>
+            ))}
+          </div>
 
-        <div className="flex flex-wrap gap-3">
-          {project.githubUrl ? (
-            <Link
-              href={project.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "sm" }),
-                "no-underline",
-              )}
-            >
-              <Github className="h-4 w-4" aria-hidden="true" />
-              GitHub
-            </Link>
-          ) : null}
-          {project.demoUrl ? (
-            <Link
-              href={project.demoUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(
-                buttonVariants({ variant: "primary", size: "sm" }),
-                "no-underline",
-              )}
-            >
-              <ExternalLink className="h-4 w-4" aria-hidden="true" />
-              Live Demo
-            </Link>
-          ) : null}
-        </div>
-      </CardContent>
+          <div className="flex flex-wrap gap-3">
+            {project.githubUrl ? (
+              <Link
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "sm" }),
+                  "no-underline",
+                )}
+              >
+                <Github className="h-4 w-4" aria-hidden="true" />
+                GitHub
+              </Link>
+            ) : null}
+            {project.demoUrl ? (
+              <Link
+                href={project.demoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={cn(
+                  buttonVariants({ variant: "primary", size: "sm" }),
+                  "no-underline",
+                )}
+              >
+                <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                Live Demo
+              </Link>
+            ) : null}
+          </div>
+        </CardContent>
+      </div>
     </Card>
   );
 }
@@ -151,9 +170,10 @@ export function ContactMethodList({ methods }: ContactMethodListProps) {
         const isEmail = method.label.toLowerCase() === "email";
         const isPhone = method.label.toLowerCase() === "phone";
         const isExternal = !isEmail && !isPhone;
-        const finalHref = isEmail && !method.href.startsWith("mailto:")
-          ? `mailto:${method.href}`
-          : method.href;
+        const finalHref =
+          isEmail && !method.href.startsWith("mailto:")
+            ? `mailto:${method.href}`
+            : method.href;
 
         return (
           <li key={method.label}>
@@ -163,7 +183,9 @@ export function ContactMethodList({ methods }: ContactMethodListProps) {
               rel={isExternal ? "noopener noreferrer" : undefined}
               className="border-border bg-surface hover:bg-muted flex items-center justify-between rounded-lg border px-4 py-3 text-sm transition-colors"
             >
-              <span className="text-foreground font-medium">{method.label}</span>
+              <span className="text-foreground font-medium">
+                {method.label}
+              </span>
               <span className="text-muted-foreground">{method.value}</span>
               {getIcon(method.label)}
             </a>

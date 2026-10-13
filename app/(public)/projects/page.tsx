@@ -19,7 +19,7 @@ export default function ProjectsPage() {
           title={projectsPageContent.title}
           description={projectsPageContent.description}
         />
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-2 items-start">
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
