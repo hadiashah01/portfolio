@@ -4,6 +4,15 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import Link from "next/link";
 import { formatDate } from "@/utils/formatDate";
 
+type RecentMessage = {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  status: "unread" | "read" | "responded" | "archived";
+  createdAt: Date;
+};
+
 export const metadata = {
   title: "Dashboard Overview",
   description: "Admin dashboard overview.",
@@ -24,7 +33,7 @@ export default async function DashboardPage() {
     },
   });
 
-  const recentMessages = await prisma.contactMessage.findMany({
+  const recentMessages: RecentMessage[] = await prisma.contactMessage.findMany({
     orderBy: { createdAt: "desc" },
     take: 5,
   });
