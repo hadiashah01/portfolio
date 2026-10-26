@@ -4,17 +4,14 @@ export type NavItem = {
 };
 
 export const publicNav: NavItem[] = [
-  { title: "Home", href: "/" },
+  { title: "Work", href: "/projects" },
   { title: "About", href: "/about" },
-  { title: "Projects", href: "/projects" },
-  { title: "Journey", href: "/journey" },
   { title: "Contact", href: "/contact" },
 ];
 
 export const footerLinks: NavItem[] = [
-  { title: "Home", href: "/" },
-  { title: "Projects", href: "/projects" },
-  { title: "Journey", href: "/journey" },
+  { title: "Work", href: "/projects" },
+  { title: "About", href: "/about" },
   { title: "Contact", href: "/contact" },
 ];
 

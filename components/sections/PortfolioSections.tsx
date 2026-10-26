@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Github, Mail, Linkedin, Phone } from "lucide-react";
 
@@ -13,6 +12,7 @@ import {
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/utils/cn";
 import type { Project } from "@/config/projects";
+import { ProjectPreview } from "@/components/ui/ProjectPreview";
 
 type SectionHeadingProps = {
   eyebrow: string;
@@ -26,14 +26,18 @@ export function SectionHeading({
   description,
 }: SectionHeadingProps) {
   return (
-    <div className="max-w-2xl space-y-3">
+    <div className="max-w-xl space-y-3">
       <p className="text-primary text-sm font-medium tracking-[0.24em] uppercase">
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h2 className="text-display text-4xl font-semibold tracking-tight sm:text-5xl text-balance">
         {title}
       </h2>
-      <p className="text-muted-foreground text-lg">{description}</p>
+      {description && (
+        <p className="text-muted-foreground text-lg leading-relaxed">
+          {description}
+        </p>
+      )}
     </div>
   );
 }
@@ -46,82 +50,72 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const hasImage = project.image && !project.image.includes("placeholder");
 
   return (
-    <Card className="h-auto self-start">
-      <div className=" space-y-4   ">
-        {hasImage && (
-          <div className="border-border group relative overflow-hidden rounded-md border">
-            <Image
-              src={project.image}
-              alt={`${project.title} screenshot`}
-              width={800}
-              height={450}
-              className="h-auto w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
-            />
-          </div>
-        ) }
+    <Card className="h-full flex flex-col border-border bg-surface hover:shadow-md transition-shadow duration-300 group">
+      {hasImage && (
+        <ProjectPreview
+          src={project.image}
+          alt={`${project.title} screenshot`}
+          className="aspect-video w-full object-cover"
+        />
+      )}
 
-        <CardHeader>
-          <div className="flex flex-wrap items-center gap-2">
-            {project.featured ? <Badge variant="filled">Featured</Badge> : null}
-            <Badge variant="soft">{project.technologies[0]}</Badge>
-          </div>
-          <CardTitle>{project.title}</CardTitle>
-          <CardDescription>{project.description}</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="space-y-3">
-            <div>
-              <p className="text-foreground text-sm font-semibold">Problem</p>
-              <p className="text-muted-foreground text-sm">{project.problem}</p>
-            </div>
-            <div>
-              <p className="text-foreground text-sm font-semibold">Solution</p>
-              <p className="text-muted-foreground text-sm">
-                {project.solution}
-              </p>
-            </div>
-          </div>
+      <CardHeader className="flex flex-col gap-2 pt-5">
+        <div className="flex flex-wrap items-center gap-2">
+          {project.featured ? (
+            <Badge variant="filled" className="text-xs px-2 py-1">
+              Selected
+            </Badge>
+          ) : null}
+          <span className="text-[10px] font-medium tracking-wider text-muted-foreground uppercase">
+            {project.type ? project.type.charAt(0).toUpperCase() + project.type.slice(1) : ""}
+          </span>
+        </div>
+        <CardTitle className="text-display text-xl font-semibold leading-tight">
+          {project.title}
+        </CardTitle>
+        <CardDescription className="line-clamp-2">{project.description}</CardDescription>
+      </CardHeader>
 
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((technology) => (
-              <Badge key={technology} variant="outline">
-                {technology}
-              </Badge>
-            ))}
-          </div>
+      <CardContent className="space-y-4 pt-0 flex-1">
+        <div className="flex flex-wrap gap-2">
+          {project.technologies.map((technology) => (
+            <Badge key={technology} variant="outline" className="text-xs">
+              {technology}
+            </Badge>
+          ))}
+        </div>
 
-          <div className="flex flex-wrap gap-3">
-            {project.githubUrl ? (
-              <Link
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "sm" }),
-                  "no-underline",
-                )}
-              >
-                <Github className="h-4 w-4" aria-hidden="true" />
-                GitHub
-              </Link>
-            ) : null}
-            {project.demoUrl ? (
-              <Link
-                href={project.demoUrl}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  buttonVariants({ variant: "primary", size: "sm" }),
-                  "no-underline",
-                )}
-              >
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                Live Demo
-              </Link>
-            ) : null}
-          </div>
-        </CardContent>
-      </div>
+        <div className="flex flex-wrap gap-3 mt-auto">
+          {project.githubUrl ? (
+            <Link
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "sm" }),
+                "no-underline text-xs px-3 py-2",
+              )}
+            >
+              <Github className="h-3 w-3" aria-hidden="true" />
+              <span className="ml-1">GitHub</span>
+            </Link>
+          ) : null}
+          {project.demoUrl ? (
+            <Link
+              href={project.demoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={cn(
+                buttonVariants({ variant: "primary", size: "sm" }),
+                "no-underline text-xs px-3 py-2",
+              )}
+            >
+              <ExternalLink className="h-3 w-3" aria-hidden="true" />
+              <span className="ml-1">Live Demo</span>
+            </Link>
+          ) : null}
+        </div>
+      </CardContent>
     </Card>
   );
 }

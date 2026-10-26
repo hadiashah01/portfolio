@@ -20,9 +20,9 @@ export const metadata = buildMetadata({
 
 export default function ContactPage() {
   return (
-    <Section containerSize="lg" className="pt-20 sm:pt-24">
-      <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <div className="space-y-6">
+    <Section containerSize="lg" className="pt-24 sm:pt-32 pb-20 sm:pb-28">
+      <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div className="space-y-8">
           <SectionHeading
             eyebrow={contactPageContent.eyebrow}
             title={contactPageContent.title}

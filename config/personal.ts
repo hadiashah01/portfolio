@@ -2,7 +2,7 @@ export const personal = {
   name: "Hadia Shahjahan",
   professionalTitle: "Frontend Developer",
   tagline:
-    "I build thoughtful, accessible interfaces and polished web experiences with modern frontend tools.",
+    "Thoughtful websites. Carefully built. I build responsive web experiences for businesses and digital products.",
   location: "Sialkot, Punjab, Pakistan",
   email: "hadiashah010@gmail.com",
   phone: "+92 334 7042123",
@@ -13,27 +13,28 @@ export const personal = {
   availability: "Open to frontend development opportunities",
   education: "BSCS (2nd Year • 4th Semester) - Virtual University of Pakistan",
   intro:
-    "I am a Sialkot-based frontend developer currently pursuing a BSCS (2nd Year, 4th Semester) at the Virtual University of Pakistan. I build responsive, accessible web interfaces using HTML5, CSS3, JavaScript, React, Tailwind CSS, and Bootstrap. My focus is on turning UI designs into clean, semantic code while applying web accessibility standards and maintainable component design.",
+    "I am a frontend developer based in Sialkot, Punjab, Pakistan. I build responsive, well-crafted websites and digital experiences for businesses — with visual design, useful functionality, and clear communication. I focus on frontend work I can own from start to finish, using React, Next.js, Tailwind CSS, and modern web standards.",
   currentFocus: [
-    "Building polished, responsive interfaces with React and Next.js",
-    "Practicing responsive design using modern layouts like Flexbox and Grid",
-    "Ensuring accessibility standards across web components",
+    "Building responsive websites for businesses and digital products",
+    "Frontend development with React and Next.js",
+    "Clear communication and maintainable component design",
   ],
   technicalInterests: [
     "React",
+    "Next.js",
     "Tailwind CSS",
     "JavaScript",
-    "Bootstrap",
     "Responsive Design",
     "Accessibility",
   ],
   learningPhilosophy:
-    "I learn best by building real products, iterating carefully, and practicing core frontend skills through project recreation and cloning.",
+    "I learn best by building real products, iterating carefully, and practicing core frontend skills through project work.",
   skills: [
     "HTML5",
     "CSS3",
     "JavaScript",
     "React",
+    "Next.js",
     "Tailwind CSS",
     "Bootstrap",
     "Git",
@@ -44,71 +45,71 @@ export const personal = {
 
 export const homePageContent = {
   heroEyebrow: "Frontend Developer",
-  heroTitle: "Crafting thoughtful interfaces with clarity and care",
+  heroTitle: "Thoughtful websites. Carefully built.",
   heroDescription:
-    "I build accessible, responsive experiences that balance clean implementation with polished design.",
-  primaryCtaLabel: "View Projects",
-  secondaryCtaLabel: "Contact Me",
-  currentFocusTitle: "Current focus",
+    "I build responsive web experiences for businesses and digital products — bringing visual design, useful functionality, and clear communication together.",
+  primaryCtaLabel: "Explore selected work",
+  secondaryCtaLabel: "Discuss a project",
+  currentFocusTitle: "What I build",
   currentFocusDescription:
-    "Building thoughtful experiences that balance clarity, performance, and accessibility.",
-  featuredProjectsEyebrow: "Featured work",
-  featuredProjectsTitle: "Selected projects",
+    "Responsive websites and digital experiences for businesses, built with care and clear communication.",
+  featuredProjectsEyebrow: "Selected work",
+  featuredProjectsTitle: "Projects I've built",
   featuredProjectsDescription:
-    "A snapshot of work that reflects how I approach layout precision, frontend craft, and project recreation.",
-  skillsEyebrow: "Skills overview",
-  skillsTitle: "Tools and strengths",
+    "A selection of websites and digital experiences, each built with a clear purpose and thoughtful execution.",
+  skillsEyebrow: "Tools",
+  skillsTitle: "Frontend tools I work with",
   skillsDescription:
-    "I enjoy building interfaces with a mix of practical implementation and clean styles.",
-  journeyEyebrow: "Learning journey",
-  journeyTitle: "Milestones and momentum",
+    "I build interfaces with React, Next.js, and Tailwind CSS — focused on clean implementation and maintainable code.",
+  journeyEyebrow: "Background",
+  journeyTitle: "How I work",
   journeyDescription:
-    "Academic learning combined with hands-on practice building clones and dynamic applications.",
+    "I build real products, iterate carefully, and focus on frontend craft — from layout precision to accessible components.",
   ctaEyebrow: "Ready to connect?",
-  ctaTitle: "Let’s build something together.",
+  ctaTitle: "Let's build something together.",
   ctaDescription:
-    "I’m interested in frontend development opportunities, collaborative work, and projects where I can ship clean code.",
+    "Open to website projects and frontend development opportunities. Have something in mind? Let's talk.",
   ctaLinkLabel: "Start a Conversation",
 };
 
 export const aboutPageContent = {
   eyebrow: "About",
-  title: "A focused developer with a core frontend background",
+  title: "Frontend developer. Business websites. Thoughtful execution.",
   description:
-    "I care about making digital experiences feel easy to use, visually coherent, and responsive.",
+    "I build responsive web experiences for businesses and digital products — focusing on frontend work I can own from start to finish.",
   quickProfileTitle: "Quick profile",
   quickProfileDescription:
-    "Based in Sialkot, Punjab, Pakistan. Open to frontend development opportunities.",
-  currentFocusTitle: "Current focus",
-  technicalInterestsTitle: "Technical interests",
-  learningPhilosophyTitle: "Learning philosophy",
+    "Based in Sialkot, Punjab, Pakistan. Open to frontend development opportunities and website projects.",
+  currentFocusTitle: "What I focus on",
+  technicalInterestsTitle: "Frontend tools",
+  learningPhilosophyTitle: "My approach",
 };
 
 export const projectsPageContent = {
   eyebrow: "Projects",
   title: "Selected work",
   description:
-    "Each project below highlights the problem, the solution, and the lessons learned in my development process.",
+    "Each project below reflects how I approach layout precision, frontend craft, and clear communication.",
 };
 
 export const journeyPageContent = {
-  eyebrow: "Journey",
-  title: "How the work has evolved",
+  eyebrow: "Background",
+  title: "How my work has evolved",
   description:
-    "My journey is shaped by structured academic learning combined with continuous hands-on cloning and project practice.",
+    "Structured academic learning combined with continuous hands-on practice building responsive layouts and real products.",
   currentDirectionTitle: "Current direction",
   currentDirectionDescription:
-    "Pursuing my BSCS degree while building responsive layouts and expanding my frontend skills.",
+    "Pursuing my BSCS degree while building responsive websites and expanding my frontend skills.",
 };
 
 export const contactPageContent = {
   eyebrow: "Contact",
-  title: "Let’s talk",
+  title: "Let's talk",
   description:
-    "Whether it’s a project idea, a job conversation, or a collaboration request, I’d be glad to connect.",
+    "Whether it's a website project, a frontend opportunity, or a collaboration request, I'd be glad to connect.",
   reachOutTitle: "Reach out",
   reachOutDescription:
-    "I typically reply within a few days and enjoy discussing frontend development.",
+    "I typically reply within a few days and enjoy discussing frontend development and website projects.",
   formTitle: "Contact form",
   formDescription: "Fill out the form below to send a message directly to my inbox.",
   nameLabel: "Name",

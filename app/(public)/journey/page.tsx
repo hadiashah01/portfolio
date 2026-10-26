@@ -12,16 +12,16 @@ import { journeyPageContent, personal } from "@/config/personal";
 import { journeyMilestones } from "@/config/journey";
 
 export const metadata = buildMetadata({
-  title: "Learning Journey",
-  description: "Milestones and continuous learning progress over time.",
+  title: "Background",
+  description: "How my work has evolved over time.",
   path: "/journey",
 });
 
 export default function JourneyPage() {
   return (
-    <Section containerSize="lg" className="pt-20 sm:pt-24">
-      <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <div className="space-y-6">
+    <Section containerSize="lg" className="pt-24 sm:pt-32 pb-20 sm:pb-28">
+      <div className="grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+        <div className="space-y-8">
           <SectionHeading
             eyebrow={journeyPageContent.eyebrow}
             title={journeyPageContent.title}
@@ -35,7 +35,7 @@ export default function JourneyPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-sm leading-7">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 {personal.learningPhilosophy}
               </p>
             </CardContent>
@@ -43,7 +43,7 @@ export default function JourneyPage() {
         </div>
 
         <div>
-          <ul className="space-y-4">
+          <ul className="space-y-6">
             {journeyMilestones.map((milestone) => (
               <TimelineItem
                 key={milestone.title}
