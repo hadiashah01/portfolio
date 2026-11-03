@@ -9,7 +9,6 @@ export const personal = {
   github: "https://github.com/hadiashah01",
   linkedin: "https://www.linkedin.com/in/hadia-shahjahan",
   resumePath: "/assets/My_Resume.docx",
-  profileImage: "/images/profile.jpg",
   availability: "Open to frontend development opportunities",
   education: "BSCS (2nd Year • 4th Semester) - Virtual University of Pakistan",
   intro:

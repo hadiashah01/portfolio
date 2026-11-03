@@ -1,5 +1,8 @@
+import { Suspense } from "react";
+
 import { buildMetadata } from "@/config/metadata";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Spinner } from "@/components/ui/Spinner";
 import { LoginForm } from "@/components/forms/LoginForm";
 
 export const metadata = buildMetadata({
@@ -18,7 +21,15 @@ export default function LoginPage() {
           Sign in to manage contact submissions and message queries.
         </CardDescription>
       </CardHeader>
-      <LoginForm />
+      <Suspense
+        fallback={
+          <div className="flex justify-center p-8">
+            <Spinner label="Loading login form" />
+          </div>
+        }
+      >
+        <LoginForm />
+      </Suspense>
     </Card>
   );
 }

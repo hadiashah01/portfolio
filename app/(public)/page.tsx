@@ -90,6 +90,14 @@ export default function HomePage() {
               <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
+          <div className="flex justify-center">
+            <Link
+              href="/projects"
+              className={`${buttonVariants({ variant: "outline", size: "md" })} no-underline`}
+            >
+              See more
+            </Link>
+          </div>
         </div>
       </Section>
 

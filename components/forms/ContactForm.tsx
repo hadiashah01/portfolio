@@ -13,10 +13,11 @@ import { contactPageContent } from "@/config/personal";
 import { contactFormPlaceholders } from "@/config/social";
 
 const contactFormSchema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
-  email: z.string().trim().email("A valid email is required"),
-  subject: z.string().trim().min(1, "Subject is required"),
-  message: z.string().trim().min(1, "Message is required"),
+  name: z.string().trim().min(1, "Name is required").max(100),
+  email: z.string().trim().email("A valid email is required").max(254),
+  subject: z.string().trim().min(1, "Subject is required").max(150),
+  message: z.string().trim().min(1, "Message is required").max(5000),
+  website: z.string().optional(),
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
@@ -39,6 +40,7 @@ export function ContactForm() {
       email: "",
       subject: "",
       message: "",
+      website: "",
     },
   });
 
@@ -81,6 +83,16 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <CardContent className="space-y-4">
+        <div className="hidden" aria-hidden="true">
+          <label htmlFor="website">Website</label>
+          <input
+            id="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            {...register("website")}
+          />
+        </div>
         {submitStatus.type === "success" && (
           <div className="rounded-md bg-success/10 border border-success/20 p-4 text-sm text-success">
             {submitStatus.message}
@@ -100,10 +112,14 @@ export function ContactForm() {
               id="name"
               placeholder={contactFormPlaceholders.name}
               disabled={isSubmitting}
+              aria-invalid={Boolean(errors.name)}
+              aria-describedby={errors.name ? "name-error" : undefined}
               {...register("name")}
             />
             {errors.name && (
-              <p className="text-xs text-error mt-1">{errors.name.message}</p>
+              <p id="name-error" className="text-xs text-error mt-1">
+                {errors.name.message}
+              </p>
             )}
           </div>
           <div className="space-y-2">
@@ -115,10 +131,14 @@ export function ContactForm() {
               type="email"
               placeholder={contactFormPlaceholders.email}
               disabled={isSubmitting}
+              aria-invalid={Boolean(errors.email)}
+              aria-describedby={errors.email ? "email-error" : undefined}
               {...register("email")}
             />
             {errors.email && (
-              <p className="text-xs text-error mt-1">{errors.email.message}</p>
+              <p id="email-error" className="text-xs text-error mt-1">
+                {errors.email.message}
+              </p>
             )}
           </div>
         </div>
@@ -130,10 +150,14 @@ export function ContactForm() {
             id="subject"
             placeholder={contactFormPlaceholders.subject}
             disabled={isSubmitting}
+            aria-invalid={Boolean(errors.subject)}
+            aria-describedby={errors.subject ? "subject-error" : undefined}
             {...register("subject")}
           />
           {errors.subject && (
-            <p className="text-xs text-error mt-1">{errors.subject.message}</p>
+            <p id="subject-error" className="text-xs text-error mt-1">
+              {errors.subject.message}
+            </p>
           )}
         </div>
         <div className="space-y-2">
@@ -144,10 +168,14 @@ export function ContactForm() {
             id="message"
             placeholder={contactFormPlaceholders.message}
             disabled={isSubmitting}
+            aria-invalid={Boolean(errors.message)}
+            aria-describedby={errors.message ? "message-error" : undefined}
             {...register("message")}
           />
           {errors.message && (
-            <p className="text-xs text-error mt-1">{errors.message.message}</p>
+            <p id="message-error" className="text-xs text-error mt-1">
+              {errors.message.message}
+            </p>
           )}
         </div>
         <Button

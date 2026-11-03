@@ -43,22 +43,24 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const hasImage = project.image && !project.image.includes("placeholder");
+  const hasImage = Boolean(
+    project.image && !project.image.includes("placeholder"),
+  );
 
   return (
     <Card className="h-auto self-start">
-      <div className=" space-y-4   ">
+      <div className="space-y-4">
         {hasImage && (
-          <div className="border-border group relative overflow-hidden rounded-md border">
+          <div className="border-border group relative aspect-video overflow-hidden rounded-md border">
             <Image
-              src={project.image}
+              src={project.image as string}
               alt={`${project.title} screenshot`}
-              width={800}
-              height={450}
-              className="h-auto w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover transition-opacity duration-300 group-hover:opacity-90"
             />
           </div>
-        ) }
+        )}
 
         <CardHeader>
           <div className="flex flex-wrap items-center gap-2">
@@ -69,18 +71,30 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <CardDescription>{project.description}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="space-y-3">
-            <div>
-              <p className="text-foreground text-sm font-semibold">Problem</p>
-              <p className="text-muted-foreground text-sm">{project.problem}</p>
+          {project.problem || project.solution ? (
+            <div className="space-y-3">
+              {project.problem ? (
+                <div>
+                  <p className="text-foreground text-sm font-semibold">
+                    Problem
+                  </p>
+                  <p className="text-muted-foreground text-sm">
+                    {project.problem}
+                  </p>
+                </div>
+              ) : null}
+              {project.solution ? (
+                <div>
+                  <p className="text-foreground text-sm font-semibold">
+                    Solution
+                  </p>
+                  <p className="text-muted-foreground text-sm">
+                    {project.solution}
+                  </p>
+                </div>
+              ) : null}
             </div>
-            <div>
-              <p className="text-foreground text-sm font-semibold">Solution</p>
-              <p className="text-muted-foreground text-sm">
-                {project.solution}
-              </p>
-            </div>
-          </div>
+          ) : null}
 
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((technology) => (

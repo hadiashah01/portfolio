@@ -2,6 +2,7 @@ import { personal } from "@/config/personal";
 
 const githubDisplay = personal.github.replace(/^https?:\/\//, "");
 const linkedinDisplay = personal.linkedin.replace(/^https?:\/\//, "");
+const phoneHref = personal.phone.replace(/[^\d+]/g, "");
 
 export const socialLinks = {
   github: personal.github,
@@ -19,7 +20,7 @@ export const contactMethods = [
   {
     label: "Phone",
     value: personal.phone,
-    href: `tel:${personal.phone}`,
+    href: `tel:${phoneHref}`,
   },
   {
     label: "GitHub",

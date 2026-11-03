@@ -40,9 +40,28 @@ export default async function DashboardLayout({ children }: { children: ReactNod
           <p className="text-sm text-muted-foreground font-medium">
             Portfolio Admin Dashboard
           </p>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <LogoutButton className="w-auto px-2 py-1 text-xs md:hidden" />
+          </div>
         </header>
-        <main className="flex-1 p-6 overflow-y-auto">{children}</main>
+        <nav
+          aria-label="Dashboard"
+          className="flex gap-1 overflow-x-auto border-b border-border bg-surface px-4 py-2 md:hidden"
+        >
+          {dashboardNav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="shrink-0 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              {item.title}
+            </Link>
+          ))}
+        </nav>
+        <main id="main-content" className="flex-1 p-6 overflow-y-auto">
+          {children}
+        </main>
       </div>
     </div>
   );

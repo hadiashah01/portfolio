@@ -23,6 +23,7 @@ export function MessagesList({ initialMessages }: MessagesListProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -41,6 +42,7 @@ export function MessagesList({ initialMessages }: MessagesListProps) {
 
   const handleStatusChange = async (id: string, newStatus: string) => {
     setUpdatingId(id);
+    setErrorMessage(null);
     try {
       const response = await fetch(`/api/contact/${id}`, {
         method: "PATCH",
@@ -60,7 +62,7 @@ export function MessagesList({ initialMessages }: MessagesListProps) {
       );
     } catch (err) {
       console.error(err);
-      alert("Error updating status. Please try again.");
+      setErrorMessage("Error updating status. Please try again.");
     } finally {
       setUpdatingId(null);
     }
@@ -87,6 +89,14 @@ export function MessagesList({ initialMessages }: MessagesListProps) {
 
   return (
     <div className="space-y-4">
+      {errorMessage && (
+        <div
+          role="alert"
+          className="rounded-md bg-error/10 border border-error/20 p-3 text-sm text-error"
+        >
+          {errorMessage}
+        </div>
+      )}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between bg-surface p-4 rounded-lg border border-border shadow-sm">
         <input
           type="text"

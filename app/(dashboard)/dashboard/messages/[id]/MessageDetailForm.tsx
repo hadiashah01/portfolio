@@ -11,10 +11,12 @@ type MessageDetailFormProps = {
 export function MessageDetailForm({ messageId, initialStatus }: MessageDetailFormProps) {
   const [status, setStatus] = useState(initialStatus);
   const [updating, setUpdating] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const router = useRouter();
 
   const handleStatusChange = async (newStatus: string) => {
     setUpdating(true);
+    setErrorMessage(null);
     try {
       const response = await fetch(`/api/contact/${messageId}`, {
         method: "PATCH",
@@ -32,7 +34,7 @@ export function MessageDetailForm({ messageId, initialStatus }: MessageDetailFor
       router.refresh();
     } catch (err) {
       console.error(err);
-      alert("Error updating status. Please try again.");
+      setErrorMessage("Error updating status. Please try again.");
     } finally {
       setUpdating(false);
     }
@@ -64,6 +66,7 @@ export function MessageDetailForm({ messageId, initialStatus }: MessageDetailFor
         ) : (
           <select
             value={status}
+            aria-label="Query status"
             onChange={(e) => handleStatusChange(e.target.value)}
             className={`h-9 rounded-md border text-sm font-semibold px-3 py-1 focus-visible:outline-none cursor-pointer ${getStatusColor(status)}`}
           >
@@ -74,6 +77,11 @@ export function MessageDetailForm({ messageId, initialStatus }: MessageDetailFor
           </select>
         )}
       </div>
+      {errorMessage && (
+        <p role="alert" className="text-xs text-error">
+          {errorMessage}
+        </p>
+      )}
     </div>
   );
 }

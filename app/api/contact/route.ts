@@ -3,31 +3,68 @@ import { z } from "zod";
 
 import { prisma } from "@/lib/prisma";
 import { sendContactNotification } from "@/lib/resend";
+import { getClientIp } from "@/lib/request";
+import { rateLimit } from "@/lib/rate-limit";
 
 const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
-  email: z.string().trim().email("A valid email is required"),
-  subject: z.string().trim().min(1, "Subject is required"),
-  message: z.string().trim().min(1, "Message is required"),
+  name: z.string().trim().min(1, "Name is required").max(100),
+  email: z.string().trim().email("A valid email is required").max(254),
+  subject: z.string().trim().min(1, "Subject is required").max(150),
+  message: z.string().trim().min(1, "Message is required").max(5000),
+  website: z.string().optional(),
 });
 
 export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const result = contactSchema.safeParse(body);
+  const ip = getClientIp(request);
+  const limit = rateLimit(`contact:${ip}`, 5, 10 * 60 * 1000);
 
-    if (!result.success) {
-      return NextResponse.json(
-        {
-          error: "Invalid request body",
-          issues: result.error.flatten().fieldErrors,
+  if (!limit.success) {
+    return NextResponse.json(
+      { error: "Too many messages sent. Please try again later." },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(
+            Math.ceil((limit.resetAt - Date.now()) / 1000),
+          ),
         },
-        { status: 400 },
-      );
-    }
+      },
+    );
+  }
 
-    const { name, email, subject, message } = result.data;
+  let body: unknown;
 
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { error: "Invalid request body" },
+      { status: 400 },
+    );
+  }
+
+  const result = contactSchema.safeParse(body);
+
+  if (!result.success) {
+    return NextResponse.json(
+      {
+        error: "Invalid request body",
+        issues: result.error.flatten().fieldErrors,
+      },
+      { status: 400 },
+    );
+  }
+
+  const { name, email, subject, message, website } = result.data;
+
+  if (website) {
+    return NextResponse.json(
+      { message: "Contact message saved successfully" },
+      { status: 201 },
+    );
+  }
+
+  try {
     const contactMessage = await prisma.contactMessage.create({
       data: {
         name,
@@ -37,14 +74,10 @@ export async function POST(request: Request) {
       },
     });
 
-    // Send email notification (fails gracefully internally, doesn't block the client response on error)
-    await sendContactNotification(contactMessage);
+    void sendContactNotification(contactMessage);
 
     return NextResponse.json(
-      {
-        message: "Contact message saved successfully",
-        data: contactMessage,
-      },
+      { message: "Contact message saved successfully" },
       { status: 201 },
     );
   } catch (error) {
@@ -58,4 +91,3 @@ export async function POST(request: Request) {
     );
   }
 }
-

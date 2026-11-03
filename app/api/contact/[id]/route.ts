@@ -1,41 +1,54 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { requireAdmin } from "@/lib/auth";
+import { z } from "zod";
 
-type ContactStatus = "unread" | "read" | "responded" | "archived";
+import { prisma } from "@/lib/prisma";
+import { requireAdminApi } from "@/lib/auth";
+
+const updateStatusSchema = z.object({
+  status: z.enum(["unread", "read", "responded", "archived"]),
+});
 
 export async function PATCH(
   request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
+  const session = await requireAdminApi();
+
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
+
   try {
-    // Authorize user as Admin
-    await requireAdmin();
-
     const { id } = await params;
-    const body = await request.json();
-    const { status } = body;
+    const result = updateStatusSchema.safeParse(await request.json());
 
-    // Validate the status value
-    const validStatuses: ContactStatus[] = ["unread", "read", "responded", "archived"];
-    if (!validStatuses.includes(status)) {
+    if (!result.success) {
       return NextResponse.json(
         { error: "Invalid status value." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const updated = await prisma.contactMessage.update({
       where: { id },
-      data: { status: status as ContactStatus },
+      data: { status: result.data.status },
     });
 
     return NextResponse.json(updated);
   } catch (error) {
+    if (
+      typeof error === "object" &&
+      error !== null &&
+      "code" in error &&
+      error.code === "P2025"
+    ) {
+      return NextResponse.json({ error: "Message not found." }, { status: 404 });
+    }
+
     console.error("Failed to update message status:", error);
     return NextResponse.json(
       { error: "Internal server error." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

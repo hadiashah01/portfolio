@@ -4,15 +4,6 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import Link from "next/link";
 import { formatDate } from "@/utils/formatDate";
 
-type RecentMessage = {
-  id: string;
-  name: string;
-  email: string;
-  subject: string;
-  status: "unread" | "read" | "responded" | "archived";
-  createdAt: Date;
-};
-
 export const metadata = {
   title: "Dashboard Overview",
   description: "Admin dashboard overview.",
@@ -21,22 +12,17 @@ export const metadata = {
 export default async function DashboardPage() {
   await requireAdmin();
 
-  const total = await prisma.contactMessage.count();
-  const pending = await prisma.contactMessage.count({
-    where: { status: "unread" },
-  });
-  const resolvedCompleted = await prisma.contactMessage.count({
-    where: {
-      status: {
-        in: ["read", "responded", "archived"],
-      },
-    },
-  });
-
-  const recentMessages: RecentMessage[] = await prisma.contactMessage.findMany({
-    orderBy: { createdAt: "desc" },
-    take: 5,
-  });
+  const [total, pending, resolvedCompleted, recentMessages] = await Promise.all([
+    prisma.contactMessage.count(),
+    prisma.contactMessage.count({ where: { status: "unread" } }),
+    prisma.contactMessage.count({
+      where: { status: { in: ["read", "responded", "archived"] } },
+    }),
+    prisma.contactMessage.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 5,
+    }),
+  ]);
 
   const getStatusLabel = (status: string) => {
     switch (status) {

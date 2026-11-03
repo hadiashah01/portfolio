@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 
-import { personal } from "@/config/personal";
 import { siteConfig } from "@/config/site";
 
 type BuildMetadataOptions = {
@@ -33,26 +32,52 @@ export function buildMetadata({
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: "website",
+      images: [
+        {
+          url: "/og/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: siteConfig.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: pageTitle,
       description,
+      images: ["/og/og-image.png"],
+    },
+    icons: {
+      icon: [
+        {
+          url: "/icons/favicon-32.png",
+          sizes: "32x32",
+          type: "image/png",
+        },
+        {
+          url: "/icons/favicon-192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          url: "/icons/favicon-512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+      ],
+      apple: [
+        {
+          url: "/icons/apple-touch-icon.png",
+          sizes: "180x180",
+          type: "image/png",
+        },
+      ],
     },
     robots: noIndex
       ? { index: false, follow: false }
       : { index: true, follow: true },
   };
 }
-
-export const metadataDefaults = {
-  title: siteConfig.title,
-  description: siteConfig.description,
-  keywords: siteConfig.keywords,
-  author: personal.name,
-  siteName: siteConfig.name,
-  themeColor: siteConfig.themeColor,
-};
 
 export const siteViewport: Viewport = {
   themeColor: [

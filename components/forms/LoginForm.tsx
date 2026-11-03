@@ -25,6 +25,12 @@ type GrecaptchaWindow = typeof window & {
   };
 };
 
+function getSafeNextPath(rawPath: string | null) {
+  if (!rawPath) return "/dashboard";
+  if (!rawPath.startsWith("/") || rawPath.startsWith("//")) return "/dashboard";
+  return rawPath;
+}
+
 export function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -58,14 +64,17 @@ export function LoginForm() {
       const grecaptcha = globalWindow.grecaptcha;
       if (recaptchaSiteKey && typeof window !== "undefined" && grecaptcha) {
         recaptchaToken = await new Promise<string>((resolve) => {
+          const timeout = setTimeout(() => resolve(""), 10000);
           grecaptcha.ready(async () => {
             try {
               const token = await grecaptcha.execute(recaptchaSiteKey, {
                 action: "login",
               });
+              clearTimeout(timeout);
               resolve(token);
             } catch (err) {
               console.error("reCAPTCHA execution error:", err);
+              clearTimeout(timeout);
               resolve("");
             }
           });
@@ -95,7 +104,7 @@ export function LoginForm() {
         return;
       }
 
-      const nextPath = searchParams.get("next") || "/dashboard";
+      const nextPath = getSafeNextPath(searchParams.get("next"));
       router.push(nextPath);
       router.refresh();
     } catch (err) {
@@ -115,7 +124,10 @@ export function LoginForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <CardContent className="space-y-4 pt-4">
           {(errorMsg || authError) && (
-            <div className="rounded-md bg-error/10 border border-error/20 p-4 text-sm text-error">
+            <div
+              role="alert"
+              className="rounded-md bg-error/10 border border-error/20 p-4 text-sm text-error"
+            >
               {errorMsg || authError}
             </div>
           )}
@@ -128,10 +140,14 @@ export function LoginForm() {
               type="email"
               placeholder="admin@hadia.dev"
               disabled={isSubmitting}
+              aria-invalid={Boolean(errors.email)}
+              aria-describedby={errors.email ? "login-email-error" : undefined}
               {...register("email")}
             />
             {errors.email && (
-              <p className="text-xs text-error mt-1">{errors.email.message}</p>
+              <p id="login-email-error" className="text-xs text-error mt-1">
+                {errors.email.message}
+              </p>
             )}
           </div>
           <div className="space-y-2">
@@ -143,10 +159,16 @@ export function LoginForm() {
               type="password"
               placeholder="••••••••"
               disabled={isSubmitting}
+              aria-invalid={Boolean(errors.password)}
+              aria-describedby={
+                errors.password ? "login-password-error" : undefined
+              }
               {...register("password")}
             />
             {errors.password && (
-              <p className="text-xs text-error mt-1">{errors.password.message}</p>
+              <p id="login-password-error" className="text-xs text-error mt-1">
+                {errors.password.message}
+              </p>
             )}
           </div>
           <Button

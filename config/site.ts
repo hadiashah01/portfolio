@@ -21,13 +21,13 @@ export const siteConfig = {
     "Pakistan",
   ],
   author: personal.name,
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000"),
   locale: "en_US",
   themeColor: "#0f4c5c",
-  metadataDefaults: {
-    openGraphImage: "/og/default-og-image.png",
-    twitterCard: "summary_large_image",
-  },
   links: {
     github: personal.github,
     linkedin: personal.linkedin,
