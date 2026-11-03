@@ -1,5 +1,6 @@
 export {
   SectionHeading,
+  PageIntro,
   ProjectCard,
   TimelineItem,
   ContactMethodList,

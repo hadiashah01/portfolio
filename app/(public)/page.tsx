@@ -3,7 +3,6 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 import { Section } from "@/components/ui/Section";
 import { buttonVariants } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
 import {
   SectionHeading,
   ProjectCard,
@@ -30,99 +29,111 @@ export default function HomePage() {
     <>
       <Section
         containerSize="lg"
-        className="border-border border-b pt-14 pb-14 sm:pt-20 sm:pb-20"
+        className="pt-14 pb-20 sm:pt-20 sm:pb-28 lg:pt-24"
         aria-labelledby="hero-heading"
       >
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+        <div className="grid gap-12 lg:min-h-[calc(100svh-14rem)] lg:grid-cols-12 lg:items-center lg:gap-8">
           <div className="lg:col-span-8">
-            <div className="hero-rise text-muted-foreground flex items-start gap-3 font-mono text-[11px] tracking-[0.2em] uppercase">
-              <span
-                className="relative mt-[7px] flex h-2 w-2 shrink-0"
-                aria-hidden="true"
-              >
-                <span className="bg-brand/35 absolute inline-flex h-full w-full rounded-full" />
-                <span className="bg-brand relative inline-flex h-2 w-2 rounded-full" />
-              </span>
-              <span className="max-w-md">{personal.availability}</span>
-            </div>
+            <Reveal>
+              <p className="text-primary flex items-center gap-3 text-base font-medium">
+                <span
+                  className="bg-primary h-px w-8 shrink-0"
+                  aria-hidden="true"
+                />
+                {personal.availability}
+              </p>
 
-            <h1
-              id="hero-heading"
-              className="hero-rise text-display text-foreground mt-7 font-semibold tracking-[-0.055em] uppercase"
-              style={{ animationDelay: "80ms" }}
-            >
-              <span className="block">{firstName}</span>{" "}
-              <span className="brand-gradient-text block">{lastName}</span>
-            </h1>
-
-            <p
-              className="hero-rise text-muted-foreground mt-8 max-w-2xl text-lg leading-8 sm:text-xl sm:leading-9"
-              style={{ animationDelay: "160ms" }}
-            >
-              {personal.tagline}
-            </p>
-
-            <div
-              className="hero-rise mt-9 flex flex-wrap items-center gap-3"
-              style={{ animationDelay: "240ms" }}
-            >
-              <Link
-                href="/projects"
-                className={buttonVariants({ variant: "primary", size: "lg" })}
+              <h1
+                id="hero-heading"
+                aria-label={personal.name}
+                className="text-display text-foreground mt-8 font-black uppercase"
               >
-                {homePageContent.primaryCtaLabel}
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-              <Link
-                href="/contact"
-                className={buttonVariants({ variant: "outline", size: "lg" })}
-              >
-                {homePageContent.secondaryCtaLabel}
-              </Link>
-            </div>
+                <span className="block">{firstName}</span>
+                <span className="brand-text block">{lastName}</span>
+              </h1>
+
+              <p className="text-muted-foreground mt-8 max-w-2xl text-lg leading-8 sm:text-xl sm:leading-9">
+                {personal.tagline}
+              </p>
+
+              <div className="mt-10 flex flex-wrap items-center gap-6">
+                <Link
+                  href="/projects"
+                  className={buttonVariants({
+                    variant: "primary",
+                    size: "lg",
+                  })}
+                >
+                  {homePageContent.primaryCtaLabel}
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="link-underline text-foreground inline-flex items-center gap-1.5 text-base font-medium"
+                >
+                  {homePageContent.secondaryCtaLabel}
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </Reveal>
           </div>
 
-          <aside
-            className="hero-rise lg:border-border lg:col-span-4 lg:border-l lg:pl-8"
-            style={{ animationDelay: "320ms" }}
-          >
-            <div className="border-border border-b pb-3">
-              <p className="text-muted-foreground font-mono text-[11px] tracking-[0.2em] uppercase">
-                {homePageContent.currentFocusTitle}
-              </p>
-            </div>
-            <p className="text-muted-foreground mt-4 text-sm leading-6">
-              {homePageContent.currentFocusDescription}
-            </p>
-            <ul className="mt-6 space-y-4">
-              {personal.currentFocus.map((item, index) => (
-                <li
-                  key={item}
-                  className="border-border grid grid-cols-[24px_1fr] gap-3 border-t pt-4"
-                >
-                  <span className="text-primary font-mono text-[11px]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-foreground/80 text-sm leading-6">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <div className="border-border mt-6 border-t pt-4">
-              <p className="text-muted-foreground font-mono text-[11px] tracking-[0.2em] uppercase">
-                Based in
-              </p>
-              <p className="text-foreground mt-2 text-sm">
-                {personal.location}
-              </p>
-            </div>
+          <aside className="lg:col-span-4">
+            <Reveal delay={140}>
+              <div className="space-y-8 lg:pl-6">
+                <div>
+                  <p className="text-muted-foreground text-sm">Currently</p>
+                  <p className="text-foreground mt-2 text-base leading-7">
+                    Frontend developer based in {personal.location}.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-muted-foreground text-sm">Focus</p>
+                  <ul className="mt-3 space-y-3">
+                    {personal.currentFocus.map((item) => (
+                      <li
+                        key={item}
+                        className="text-foreground/80 text-base leading-7"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-5">
+                  <a
+                    href={personal.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline text-foreground text-sm font-medium"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href={personal.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline text-foreground text-sm font-medium"
+                  >
+                    LinkedIn
+                  </a>
+                  <a
+                    href={`mailto:${personal.email}`}
+                    className="link-underline text-foreground text-sm font-medium"
+                  >
+                    Email
+                  </a>
+                </div>
+              </div>
+            </Reveal>
           </aside>
         </div>
 
-        <div className="border-border text-muted-foreground mt-14 flex items-center justify-between border-t pt-4 font-mono text-[11px] tracking-[0.18em] uppercase">
+        <div className="border-border text-muted-foreground mt-16 flex items-center justify-between border-t pt-4 text-sm sm:mt-24">
           <span className="inline-flex items-center gap-2">
-            <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
+            <ArrowDown className="h-4 w-4" aria-hidden="true" />
             Selected work
           </span>
           <span className="hidden sm:inline">
@@ -131,40 +142,35 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section className="border-border border-b">
-        <div className="space-y-10">
-          <Reveal>
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-              <SectionHeading
-                eyebrow={homePageContent.featuredProjectsEyebrow}
-                title={homePageContent.featuredProjectsTitle}
-                description={homePageContent.featuredProjectsDescription}
-              />
-              <Link
-                href="/projects"
-                className="group text-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline"
-              >
-                All projects
-                <ArrowUpRight
-                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  aria-hidden="true"
-                />
-              </Link>
-            </div>
-          </Reveal>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
-            {featuredProjects.map((project, index) => (
-              <Reveal key={project.slug} delay={index * 70} className="h-full">
-                <ProjectCard project={project} index={index} />
-              </Reveal>
-            ))}
+      <Section className="border-border border-t">
+        <Reveal>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow={homePageContent.featuredProjectsEyebrow}
+              title={homePageContent.featuredProjectsTitle}
+              description={homePageContent.featuredProjectsDescription}
+            />
+            <Link
+              href="/projects"
+              className="link-underline text-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold"
+            >
+              All projects
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
+        </Reveal>
+
+        <div className="mt-12 grid gap-x-8 gap-y-14 md:grid-cols-2">
+          {featuredProjects.map((project, index) => (
+            <Reveal key={project.slug} delay={index * 70} className="h-full">
+              <ProjectCard project={project} index={index} />
+            </Reveal>
+          ))}
         </div>
       </Section>
 
-      <Section className="border-border border-b">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+      <Section className="border-border border-t">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
             <Reveal>
               <SectionHeading
@@ -173,34 +179,27 @@ export default function HomePage() {
                 description={homePageContent.skillsDescription}
               />
             </Reveal>
-          </div>
 
-          <div className="lg:col-span-7">
-            <div className="border-border border-t">
-              {skillCategories.map((category, index) => (
-                <Reveal key={category.title} delay={index * 60}>
-                  <div className="border-border grid gap-3 border-b py-6 sm:grid-cols-[180px_1fr] sm:gap-6">
-                    <h3 className="text-muted-foreground font-mono text-[11px] tracking-[0.18em] uppercase">
+            <Reveal delay={80}>
+              <div className="mt-10 space-y-6">
+                {skillCategories.map((category) => (
+                  <div
+                    key={category.title}
+                    className="border-border border-t pt-4"
+                  >
+                    <h3 className="text-foreground text-base font-semibold">
                       {category.title}
                     </h3>
-                    <ul className="flex flex-wrap gap-2">
-                      {category.skills.map((skill) => (
-                        <li key={skill}>
-                          <Badge variant="outline">{skill}</Badge>
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-muted-foreground mt-2 text-sm leading-6">
+                      {category.skills.join(" / ")}
+                    </p>
                   </div>
-                </Reveal>
-              ))}
-            </div>
+                ))}
+              </div>
+            </Reveal>
           </div>
-        </div>
-      </Section>
 
-      <Section className="border-border border-b">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-7 lg:pl-8">
             <Reveal>
               <SectionHeading
                 eyebrow={homePageContent.journeyEyebrow}
@@ -208,11 +207,9 @@ export default function HomePage() {
                 description={homePageContent.journeyDescription}
               />
             </Reveal>
-          </div>
 
-          <div className="lg:col-span-7">
-            <Reveal>
-              <ol>
+            <Reveal delay={80}>
+              <ol className="mt-10">
                 {journeyMilestones.map((milestone) => (
                   <TimelineItem
                     key={milestone.title}
@@ -229,28 +226,22 @@ export default function HomePage() {
 
       <Section>
         <Reveal>
-          <div className="footer-canvas border-footer-border text-footer-foreground relative overflow-hidden rounded-[2rem] border px-6 py-12 sm:px-10 sm:py-14 lg:px-14">
-            <div
-              aria-hidden="true"
-              className="footer-grid pointer-events-none absolute inset-0 opacity-40"
-            />
-            <div className="relative z-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-              <div>
-                <p className="text-footer-muted font-mono text-[11px] tracking-[0.22em] uppercase">
-                  {homePageContent.ctaEyebrow}
-                </p>
-                <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.04em] sm:text-4xl lg:text-5xl">
-                  {homePageContent.ctaTitle}
-                </h2>
-                <p className="text-footer-muted mt-4 max-w-xl text-base leading-7">
-                  {homePageContent.ctaDescription}
-                </p>
-              </div>
+          <div className="footer-canvas text-footer-foreground relative overflow-hidden rounded-[2rem] px-6 py-14 sm:px-10 sm:py-16 lg:px-14">
+            <div className="max-w-4xl">
+              <p className="text-footer-muted text-sm font-medium">
+                {homePageContent.ctaEyebrow}
+              </p>
+              <h2 className="text-footer-foreground mt-4 text-4xl font-black tracking-[-0.055em] uppercase sm:text-5xl lg:text-6xl">
+                {homePageContent.ctaTitle}
+              </h2>
+              <p className="text-footer-muted mt-5 max-w-xl text-base leading-7 sm:text-lg sm:leading-8">
+                {homePageContent.ctaDescription}
+              </p>
               <Link
                 href="/contact"
                 className={cn(
-                  buttonVariants({ variant: "secondary", size: "lg" }),
-                  "bg-footer-foreground text-footer hover:bg-footer-foreground/90",
+                  buttonVariants({ size: "lg" }),
+                  "bg-footer-foreground text-footer hover:bg-footer-foreground/90 mt-8",
                 )}
               >
                 {homePageContent.ctaLinkLabel}

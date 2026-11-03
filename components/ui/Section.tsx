@@ -18,7 +18,7 @@ export function Section({
 }: SectionProps) {
   return (
     <Component
-      className={cn("scroll-mt-24 py-20 sm:py-28", className)}
+      className={cn("scroll-mt-24 py-20 sm:py-28 lg:py-32", className)}
       {...props}
     >
       <Container size={containerSize}>{children}</Container>

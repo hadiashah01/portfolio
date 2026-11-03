@@ -1,17 +1,7 @@
 import { Download } from "lucide-react";
 
 import { Section } from "@/components/ui/Section";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { buttonVariants } from "@/components/ui/Button";
-import { cn } from "@/utils/cn";
-import { SectionHeading } from "@/components/sections";
+import { PageIntro } from "@/components/sections";
 import { Reveal } from "@/components/motion";
 import { buildMetadata } from "@/config/metadata";
 import { aboutPageContent, personal } from "@/config/personal";
@@ -31,118 +21,102 @@ const profileRows = [
 export default function AboutPage() {
   return (
     <>
-      <Section
-        containerSize="lg"
-        className="border-border border-b pt-16 sm:pt-20"
-      >
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-7">
+      <Section containerSize="lg" className="pt-16 pb-20 sm:pt-24 sm:pb-28">
+        <PageIntro
+          eyebrow={aboutPageContent.eyebrow}
+          title={aboutPageContent.title}
+          description={aboutPageContent.description}
+          meta={`${personal.professionalTitle} / ${personal.location}`}
+        />
+
+        <div className="border-border mt-16 grid gap-12 border-t pt-10 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
             <Reveal>
-              <SectionHeading
-                as="h1"
-                eyebrow={aboutPageContent.eyebrow}
-                title={aboutPageContent.title}
-                description={aboutPageContent.description}
-              />
+              <h2 className="text-foreground text-lg font-semibold">
+                {aboutPageContent.quickProfileTitle}
+              </h2>
+              <p className="text-muted-foreground mt-3 text-sm leading-6">
+                {aboutPageContent.quickProfileDescription}
+              </p>
+
+              <dl className="mt-8 space-y-5">
+                {profileRows.map((row) => (
+                  <div key={row.label}>
+                    <dt className="text-muted-foreground text-sm">
+                      {row.label}
+                    </dt>
+                    <dd className="text-foreground mt-1 text-base">
+                      {row.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <a
+                href={personal.resumePath}
+                download
+                className="link-underline text-foreground mt-8 inline-flex items-center gap-2 text-sm font-semibold"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                Download resume
+              </a>
             </Reveal>
-            <p className="text-muted-foreground mt-8 max-w-2xl text-base leading-8 sm:text-lg">
-              {personal.intro}
-            </p>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-8">
             <Reveal delay={80}>
-              <div className="border-border bg-surface rounded-xl border p-6 shadow-sm sm:p-7">
-                <div className="border-border flex items-center justify-between gap-4 border-b pb-4">
-                  <h2 className="text-lg font-medium tracking-[-0.01em]">
-                    {aboutPageContent.quickProfileTitle}
-                  </h2>
-                  <span
-                    className="bg-brand h-2 w-2 rounded-full shadow-[0_0_18px_var(--brand)]"
-                    aria-hidden="true"
-                  />
-                </div>
-                <p className="text-muted-foreground mt-4 text-sm leading-6">
-                  {aboutPageContent.quickProfileDescription}
-                </p>
-                <dl className="divide-border mt-2 divide-y">
-                  {profileRows.map((row) => (
-                    <div
-                      key={row.label}
-                      className="grid gap-1 py-3 sm:grid-cols-[100px_1fr]"
-                    >
-                      <dt className="text-muted-foreground font-mono text-[10px] tracking-[0.16em] uppercase">
-                        {row.label}
-                      </dt>
-                      <dd className="text-foreground text-sm">{row.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-                <a
-                  href={personal.resumePath}
-                  download
-                  className={cn(
-                    buttonVariants({ variant: "outline", size: "md" }),
-                    "mt-5 w-full",
-                  )}
-                >
-                  <Download className="h-4 w-4" aria-hidden="true" />
-                  Download resume
-                </a>
-              </div>
+              <p className="text-foreground max-w-3xl text-2xl leading-10 tracking-[-0.025em] sm:text-3xl sm:leading-[1.35]">
+                {personal.intro}
+              </p>
             </Reveal>
           </div>
         </div>
       </Section>
 
-      <Section>
-        <div className="grid gap-6 md:grid-cols-3">
+      <Section className="border-border border-t">
+        <div className="grid gap-12 md:grid-cols-2 lg:gap-8">
           <Reveal>
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle>{aboutPageContent.currentFocusTitle}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
+            <div>
+              <h2 className="text-foreground text-xl font-semibold tracking-[-0.02em]">
+                {aboutPageContent.currentFocusTitle}
+              </h2>
+              <ul className="mt-6">
                 {personal.currentFocus.map((item) => (
-                  <p
+                  <li
                     key={item}
-                    className="text-muted-foreground text-sm leading-6"
+                    className="border-border text-muted-foreground border-t py-4 text-base leading-7"
                   >
                     {item}
-                  </p>
+                  </li>
                 ))}
-              </CardContent>
-            </Card>
+              </ul>
+            </div>
           </Reveal>
 
-          <Reveal delay={70}>
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle>
-                  {aboutPageContent.technicalInterestsTitle}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-wrap gap-2">
-                {personal.technicalInterests.map((interest) => (
-                  <Badge key={interest} variant="outline">
-                    {interest}
-                  </Badge>
-                ))}
-              </CardContent>
-            </Card>
-          </Reveal>
-
-          <Reveal delay={140}>
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle>
-                  {aboutPageContent.learningPhilosophyTitle}
-                </CardTitle>
-                <CardDescription>{personal.learningPhilosophy}</CardDescription>
-              </CardHeader>
-            </Card>
+          <Reveal delay={80}>
+            <div>
+              <h2 className="text-foreground text-xl font-semibold tracking-[-0.02em]">
+                {aboutPageContent.technicalInterestsTitle}
+              </h2>
+              <p className="text-muted-foreground mt-6 text-base leading-8">
+                {personal.technicalInterests.join(" / ")}
+              </p>
+            </div>
           </Reveal>
         </div>
+      </Section>
+
+      <Section className="border-border border-t">
+        <Reveal>
+          <div className="max-w-5xl">
+            <p className="text-primary text-sm font-medium">
+              {aboutPageContent.learningPhilosophyTitle}
+            </p>
+            <blockquote className="text-foreground mt-5 text-3xl leading-[1.25] font-semibold tracking-[-0.04em] sm:text-4xl sm:leading-[1.2] lg:text-5xl">
+              &ldquo;{personal.learningPhilosophy}&rdquo;
+            </blockquote>
+          </div>
+        </Reveal>
       </Section>
     </>
   );

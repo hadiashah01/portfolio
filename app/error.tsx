@@ -18,25 +18,20 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
   }, [error]);
 
   return (
-    <Container className="flex min-h-[70vh] flex-col items-center justify-center py-20 text-center">
-      <p className="text-sm font-medium uppercase tracking-[0.2em] text-error">
-        Error
-      </p>
-      <h1 className="mt-4 text-4xl font-semibold tracking-tight">
+    <Container className="flex min-h-[70vh] flex-col items-start justify-center py-20">
+      <p className="text-error text-sm font-medium">Error</p>
+      <h1 className="text-foreground text-display-sm mt-4 font-black tracking-[-0.06em]">
         Something went wrong
       </h1>
-      <p className="mt-4 max-w-md text-muted-foreground">
+      <p className="text-muted-foreground mt-6 max-w-md text-lg leading-8">
         An unexpected error occurred. You can try again or return to the home
         page.
       </p>
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <div className="mt-8 flex flex-wrap items-center gap-3">
         <Button type="button" onClick={reset}>
           Try again
         </Button>
-        <Link
-          href="/"
-          className={cn(buttonVariants({ variant: "outline" }))}
-        >
+        <Link href="/" className={cn(buttonVariants({ variant: "outline" }))}>
           Return home
         </Link>
       </div>

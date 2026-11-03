@@ -50,7 +50,7 @@ export function TextHoverEffect({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={(event) => setCursor({ x: event.clientX, y: event.clientY })}
-      className={cn("cursor-pointer uppercase select-none", className)}
+      className={cn("uppercase select-none", className)}
     >
       <defs>
         <linearGradient
@@ -74,7 +74,7 @@ export function TextHoverEffect({
         <motion.radialGradient
           id={revealId}
           gradientUnits="userSpaceOnUse"
-          r="20%"
+          r="25%"
           initial={{ cx: "50%", cy: "50%" }}
           animate={maskPosition}
           transition={{ duration, ease: "easeOut" }}
@@ -122,7 +122,8 @@ export function TextHoverEffect({
         textAnchor="middle"
         dominantBaseline="middle"
         stroke={`url(#${gradientId})`}
-        strokeWidth="0.3"
+        strokeWidth="0.65"
+        strokeLinejoin="round"
         mask={`url(#${maskId})`}
         className="fill-transparent font-[helvetica] text-7xl font-bold"
       >

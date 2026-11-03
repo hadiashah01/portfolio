@@ -1,4 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Hadia Shahjahan">
-  <rect width="64" height="64" rx="14" fill="#0b4a52" />
-  <path d="M18 44V20h6l8 12 8-12h6v24h-6V30l-8 11-8-11v14h-6Z" fill="#f5f2ea" />
+  <defs>
+    <linearGradient id="spectrum" x1="18" y1="0" x2="46" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#eab308" />
+      <stop offset="0.25" stop-color="#ef4444" />
+      <stop offset="0.5" stop-color="#80eeb4" />
+      <stop offset="0.75" stop-color="#06b6d4" />
+      <stop offset="1" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#090d13" />
+  <path d="M18 17h7v12h14V17h7v28h-7V35H25v10h-7V17Z" fill="#3ca2fa" />
+  <rect x="18" y="50" width="28" height="3" rx="1.5" fill="url(#spectrum)" />
 </svg>

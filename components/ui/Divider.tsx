@@ -10,7 +10,7 @@ export function Divider({ className, label, ...props }: DividerProps) {
   if (!label) {
     return (
       <hr
-        className={cn("border-0 border-t border-border", className)}
+        className={cn("border-border border-0 border-t", className)}
         {...props}
       />
     );
@@ -22,11 +22,9 @@ export function Divider({ className, label, ...props }: DividerProps) {
       role="separator"
       aria-label={label}
     >
-      <div className="h-px flex-1 bg-border" />
-      <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-        {label}
-      </span>
-      <div className="h-px flex-1 bg-border" />
+      <div className="bg-border h-px flex-1" />
+      <span className="text-muted-foreground text-xs font-medium">{label}</span>
+      <div className="bg-border h-px flex-1" />
     </div>
   );
 }

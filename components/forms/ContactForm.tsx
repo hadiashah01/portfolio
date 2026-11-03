@@ -8,7 +8,6 @@ import * as z from "zod";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
-import { CardContent } from "@/components/ui/Card";
 import { contactPageContent } from "@/config/personal";
 import { contactFormPlaceholders } from "@/config/social";
 
@@ -81,8 +80,8 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <CardContent className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="mt-8">
+      <div className="space-y-5">
         <div className="hidden" aria-hidden="true">
           <label htmlFor="website">Website</label>
           <input
@@ -97,7 +96,7 @@ export function ContactForm() {
           {submitStatus.type === "success" && (
             <div
               role="status"
-              className="rounded-lg border border-success/25 bg-success/10 px-4 py-3 text-sm leading-6 text-success"
+              className="border-success/25 bg-success/10 text-success rounded-lg border px-4 py-3 text-sm leading-6"
             >
               {submitStatus.message}
             </div>
@@ -105,7 +104,7 @@ export function ContactForm() {
           {submitStatus.type === "error" && (
             <div
               role="alert"
-              className="rounded-lg border border-error/25 bg-error/10 px-4 py-3 text-sm leading-6 text-error"
+              className="border-error/25 bg-error/10 text-error rounded-lg border px-4 py-3 text-sm leading-6"
             >
               {submitStatus.message}
             </div>
@@ -125,7 +124,7 @@ export function ContactForm() {
               {...register("name")}
             />
             {errors.name && (
-              <p id="name-error" className="mt-1.5 text-xs text-error">
+              <p id="name-error" className="text-error mt-1.5 text-xs">
                 {errors.name.message}
               </p>
             )}
@@ -144,7 +143,7 @@ export function ContactForm() {
               {...register("email")}
             />
             {errors.email && (
-              <p id="email-error" className="mt-1.5 text-xs text-error">
+              <p id="email-error" className="text-error mt-1.5 text-xs">
                 {errors.email.message}
               </p>
             )}
@@ -163,7 +162,7 @@ export function ContactForm() {
             {...register("subject")}
           />
           {errors.subject && (
-            <p id="subject-error" className="mt-1.5 text-xs text-error">
+            <p id="subject-error" className="text-error mt-1.5 text-xs">
               {errors.subject.message}
             </p>
           )}
@@ -181,7 +180,7 @@ export function ContactForm() {
             {...register("message")}
           />
           {errors.message && (
-            <p id="message-error" className="mt-1.5 text-xs text-error">
+            <p id="message-error" className="text-error mt-1.5 text-xs">
               {errors.message.message}
             </p>
           )}
@@ -194,7 +193,7 @@ export function ContactForm() {
         >
           {contactPageContent.submitLabel}
         </Button>
-      </CardContent>
+      </div>
     </form>
   );
 }

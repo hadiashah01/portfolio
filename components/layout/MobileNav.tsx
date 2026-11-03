@@ -2,21 +2,27 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Menu, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { publicNav } from "@/config/navigation";
+import { personal } from "@/config/personal";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/utils/cn";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const panelId = useId();
-  const wrapperRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -25,14 +31,14 @@ export function MobileNav() {
   useEffect(() => {
     if (!open) return;
 
-    const wrapper = wrapperRef.current;
+    const panel = panelRef.current;
     const trigger = triggerRef.current;
     const previouslyFocused = document.activeElement as HTMLElement | null;
 
     document.body.style.overflow = "hidden";
 
     const focusFirstLink = () => {
-      panelRef.current?.querySelector<HTMLElement>("a[href]")?.focus();
+      panel?.querySelector<HTMLElement>("a[href]")?.focus();
     };
     const frame = requestAnimationFrame(focusFirstLink);
 
@@ -42,10 +48,10 @@ export function MobileNav() {
         return;
       }
 
-      if (event.key !== "Tab" || !wrapper) return;
+      if (event.key !== "Tab" || !panel) return;
 
       const focusable = Array.from(
-        wrapper.querySelectorAll<HTMLElement>(
+        panel.querySelectorAll<HTMLElement>(
           'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
         ),
       ).filter((element) => element.offsetParent !== null);
@@ -80,7 +86,7 @@ export function MobileNav() {
   }, [open]);
 
   return (
-    <div ref={wrapperRef} className="md:hidden">
+    <div className="md:hidden">
       <Button
         ref={triggerRef}
         type="button"
@@ -98,65 +104,99 @@ export function MobileNav() {
         )}
       </Button>
 
-      {open ? (
-        <>
-          <div
-            className="fixed inset-0 top-16 z-40 bg-background/70 backdrop-blur-sm"
-            aria-hidden="true"
-            onClick={() => setOpen(false)}
-          />
-          <div
-            ref={panelRef}
-            id={panelId}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Site navigation"
-            className="mobile-menu-in fixed inset-x-0 top-16 z-50 max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border bg-background px-5 pt-5 pb-8 sm:px-8"
-          >
-            <nav aria-label="Mobile" className="flex flex-col">
-              {publicNav.map((item, index) => {
-                const isActive =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
+      {mounted && open
+        ? createPortal(
+            <>
+              <div
+                className="bg-background/75 fixed inset-0 top-20 z-40 backdrop-blur-sm"
+                aria-hidden="true"
+                onClick={() => setOpen(false)}
+              />
+              <div
+                ref={panelRef}
+                id={panelId}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Site navigation"
+                className="mobile-menu-in border-border bg-background fixed inset-x-0 top-20 bottom-0 z-50 overflow-y-auto border-t px-5 pt-6 pb-10 sm:px-8"
+              >
+                <nav aria-label="Mobile" className="flex flex-col">
+                  {publicNav.map((item) => {
+                    const isActive =
+                      item.href === "/"
+                        ? pathname === "/"
+                        : pathname.startsWith(item.href);
 
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    aria-current={isActive ? "page" : undefined}
-                    className={cn(
-                      "flex items-baseline justify-between border-b border-border py-4 text-2xl font-medium tracking-[-0.02em] transition-colors",
-                      isActive
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground",
-                    )}
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        aria-current={isActive ? "page" : undefined}
+                        className={cn(
+                          "border-border flex items-center justify-between border-b py-4 text-3xl font-semibold tracking-[-0.045em] transition-colors",
+                          isActive
+                            ? "text-primary"
+                            : "text-foreground hover:text-primary",
+                        )}
+                      >
+                        {item.title}
+                        <ArrowUpRight
+                          className={cn(
+                            "h-5 w-5",
+                            isActive ? "text-primary" : "text-muted-foreground",
+                          )}
+                          aria-hidden="true"
+                        />
+                      </Link>
+                    );
+                  })}
+                </nav>
+
+                <div className="mt-8">
+                  <p className="text-muted-foreground text-sm leading-6">
+                    {personal.availability}.
+                  </p>
+                  <a
+                    href={`mailto:${personal.email}`}
+                    className="link-underline text-foreground mt-4 inline-flex items-center gap-2 text-base font-medium"
                   >
-                    <span>{item.title}</span>
-                    <span
-                      aria-hidden="true"
-                      className={cn(
-                        "font-mono text-[11px] tracking-[0.16em]",
-                        isActive ? "text-primary" : "text-muted-foreground",
-                      )}
+                    {personal.email}
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                  <div className="mt-6 flex items-center gap-5">
+                    <a
+                      href={personal.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm transition-colors"
                     >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </Link>
-                );
-              })}
-            </nav>
+                      <Github className="h-4 w-4" aria-hidden="true" />
+                      GitHub
+                    </a>
+                    <a
+                      href={personal.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm transition-colors"
+                    >
+                      <Linkedin className="h-4 w-4" aria-hidden="true" />
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
 
-            <div className="mt-7 flex items-center justify-between border-t border-border pt-5">
-              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                Theme
-              </span>
-              <ThemeToggle />
-            </div>
-          </div>
-        </>
-      ) : null}
+                <div className="border-border mt-8 flex items-center justify-between border-t pt-5">
+                  <span className="text-muted-foreground text-sm">
+                    Appearance
+                  </span>
+                  <ThemeToggle />
+                </div>
+              </div>
+            </>,
+            document.body,
+          )
+        : null}
     </div>
   );
 }
