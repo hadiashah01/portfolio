@@ -132,17 +132,24 @@ export default function HomePage() {
         </div>
 
         <div className="border-border text-muted-foreground mt-16 flex items-center justify-between border-t pt-4 text-sm sm:mt-24">
-          <span className="inline-flex items-center gap-2">
-            <ArrowDown className="h-4 w-4" aria-hidden="true" />
+          <a
+            href="#selected-work"
+            className="link-underline group hover:text-foreground focus-visible:text-foreground inline-flex items-center gap-2 rounded-sm transition-colors"
+            aria-label="Jump to selected work"
+          >
+            <ArrowDown
+              className="h-4 w-4 transition-transform group-hover:translate-y-0.5"
+              aria-hidden="true"
+            />
             Selected work
-          </span>
+          </a>
           <span className="hidden sm:inline">
             {personal.technicalInterests.slice(0, 3).join(" / ")}
           </span>
         </div>
       </Section>
 
-      <Section className="border-border border-t">
+      <Section id="selected-work" className="border-border border-t">
         <Reveal>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <SectionHeading

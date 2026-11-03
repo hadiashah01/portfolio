@@ -176,6 +176,35 @@
       );
   }
 
+  .reveal-footer {
+    position: relative;
+    z-index: 0;
+  }
+
+  @media (min-width: 48rem) and (min-height: 44rem) {
+    .reveal-footer {
+      position: sticky;
+      bottom: 0;
+    }
+  }
+
+  .footer-mark {
+    --footer-mark-height: 26rem;
+    position: relative;
+    z-index: 0;
+    display: none;
+    height: var(--footer-mark-height);
+    margin-top: calc(var(--footer-mark-height) * -0.269);
+    margin-bottom: calc(var(--footer-mark-height) * -0.231);
+  }
+
+  @media (min-width: 64rem) {
+    .footer-mark {
+      --footer-mark-height: clamp(6rem, calc(200svh - 60rem), 26rem);
+      display: flex;
+    }
+  }
+
   .spectrum-line {
     background-image: linear-gradient(
       90deg,

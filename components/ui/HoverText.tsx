@@ -30,8 +30,13 @@ export function TextHoverEffect({
     if (!svg) return;
 
     const svgRect = svg.getBoundingClientRect();
+    if (svgRect.width === 0 || svgRect.height === 0) return;
+
     const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
     const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
+
+    if (!Number.isFinite(cxPercentage) || !Number.isFinite(cyPercentage))
+      return;
 
     setMaskPosition({
       cx: `${cxPercentage}%`,

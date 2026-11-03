@@ -14,13 +14,13 @@ export function MainLayout({
   showScrollProgress = true,
 }: MainLayoutProps) {
   return (
-    <div className="bg-background relative flex min-h-screen flex-col">
+    <div id="top" className="bg-background relative flex min-h-screen flex-col">
       {showScrollProgress ? <ScrollProgress /> : null}
       <Navbar />
       <main id="main-content" className="site-canvas relative z-10 flex-1">
         {children}
       </main>
-      <div className="z-0 md:sticky md:bottom-0">
+      <div className="reveal-footer">
         <Footer />
       </div>
     </div>

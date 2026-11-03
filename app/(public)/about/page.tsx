@@ -1,8 +1,10 @@
 import { Download } from "lucide-react";
 
 import { Section } from "@/components/ui/Section";
+import { buttonVariants } from "@/components/ui/Button";
 import { PageIntro } from "@/components/sections";
 import { Reveal } from "@/components/motion";
+import { cn } from "@/utils/cn";
 import { buildMetadata } from "@/config/metadata";
 import { aboutPageContent, personal } from "@/config/personal";
 
@@ -55,7 +57,10 @@ export default function AboutPage() {
               <a
                 href={personal.resumePath}
                 download
-                className="link-underline text-foreground mt-8 inline-flex items-center gap-2 text-sm font-semibold"
+                className={cn(
+                  buttonVariants({ variant: "primary", size: "md" }),
+                  "mt-8",
+                )}
               >
                 <Download className="h-4 w-4" aria-hidden="true" />
                 Download resume

@@ -228,7 +228,8 @@ export function Footer() {
                           : undefined
                       }
                       aria-label={item.label}
-                      className="text-footer-muted hover:text-footer-foreground inline-grid h-8 w-8 place-items-center transition-colors"
+                      title={item.label}
+                      className="text-footer-accent hover:text-footer-foreground focus-visible:text-footer-foreground hover:bg-footer-accent/10 focus-visible:bg-footer-accent/10 focus-visible:ring-footer-accent focus-visible:ring-offset-footer inline-grid h-9 w-9 place-items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                     >
                       <Icon className="h-4 w-4" aria-hidden="true" />
                     </a>
@@ -238,8 +239,9 @@ export function Footer() {
             </ul>
 
             <a
-              href="#main-content"
-              className="text-footer-muted hover:text-footer-foreground inline-flex items-center gap-1.5 text-xs transition-colors"
+              href="#top"
+              aria-label="Back to top"
+              className="text-footer-muted hover:text-footer-foreground focus-visible:text-footer-foreground focus-visible:ring-footer-accent focus-visible:ring-offset-footer inline-flex items-center gap-1.5 rounded-sm text-xs transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
             >
               Back to top
               <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
@@ -248,8 +250,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative z-10 -mt-28 -mb-24 hidden h-[26rem] lg:flex">
-        <TextHoverEffect text="HADIA" duration={0.2} className="z-10" />
+      <div className="footer-mark">
+        <TextHoverEffect text="HADIA" duration={0.2} />
       </div>
     </footer>
   );
