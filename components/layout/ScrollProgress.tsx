@@ -7,7 +7,7 @@ export function ScrollProgress() {
 
   return (
     <div
-      className="fixed inset-x-0 top-0 z-[60] h-0.5 bg-transparent"
+      className="fixed inset-x-0 top-0 z-[60] h-px bg-transparent"
       aria-hidden="true"
     >
       <div

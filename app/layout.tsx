@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { buildMetadata, siteViewport } from "@/config/metadata";
@@ -16,6 +16,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+});
+
 export const metadata: Metadata = buildMetadata();
 export const viewport = siteViewport;
 
@@ -27,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} min-h-screen font-sans antialiased`}
       >
         <a
           href="#main-content"

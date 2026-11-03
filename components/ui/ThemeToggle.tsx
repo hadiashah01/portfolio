@@ -8,16 +8,20 @@ import { cn } from "@/utils/cn";
 
 export type ThemeToggleProps = {
   className?: string;
+  variant?: "outline" | "ghost";
 };
 
-export function ThemeToggle({ className }: ThemeToggleProps) {
+export function ThemeToggle({
+  className,
+  variant = "outline",
+}: ThemeToggleProps) {
   const { resolvedTheme, setTheme, mounted } = useTheme();
 
   if (!mounted) {
     return (
       <Button
         type="button"
-        variant="outline"
+        variant={variant}
         size="icon"
         aria-label="Toggle theme"
         className={className}
@@ -31,7 +35,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   return (
     <Button
       type="button"
-      variant="outline"
+      variant={variant}
       size="icon"
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       onClick={() => setTheme(isDark ? "light" : "dark")}

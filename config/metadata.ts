@@ -81,8 +81,8 @@ export function buildMetadata({
 
 export const siteViewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7f6f3" },
-    { media: "(prefers-color-scheme: dark)", color: "#121416" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f2ea" },
+    { media: "(prefers-color-scheme: dark)", color: "#0e1211" },
   ],
   colorScheme: "light dark",
 };

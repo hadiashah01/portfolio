@@ -9,56 +9,94 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border bg-surface">
-      <Container className="flex flex-col gap-8 py-12 md:flex-row md:items-start md:justify-between">
-        <div className="space-y-2">
-          <p className="text-lg font-semibold">{siteConfig.name}</p>
-          <p className="max-w-sm text-sm text-muted-foreground">
-            {siteConfig.description}
-          </p>
-        </div>
-
-        <nav aria-label="Footer" className="flex flex-wrap gap-4">
-          {publicNav.map((item) => (
+      <Container className="py-14 sm:py-16">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
             <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              href="/"
+              className="inline-flex items-center gap-2.5 text-foreground"
             >
-              {item.title}
+              <span
+                aria-hidden="true"
+                className="grid h-8 w-8 place-items-center rounded-md border border-border bg-background font-mono text-[10px] font-semibold tracking-[-0.04em] text-primary"
+              >
+                HS
+              </span>
+              <span className="text-sm font-medium tracking-[-0.01em]">
+                {siteConfig.name}
+              </span>
             </Link>
-          ))}
-        </nav>
+            <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
+              {siteConfig.description}
+            </p>
+          </div>
 
-        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          <nav aria-label="Footer">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+              Navigate
+            </p>
+            <ul className="mt-4 space-y-2.5">
+              {publicNav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+              Elsewhere
+            </p>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li>
+                <a
+                  href={siteConfig.links.github}
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.links.linkedin}
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.links.email}
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  Email
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-muted-foreground">
+            © {year} {siteConfig.name}. All rights reserved.
+          </p>
           <a
-            href={siteConfig.links.github}
-            className="transition-colors hover:text-foreground"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#main-content"
+            className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
           >
-            GitHub
-          </a>
-          <a
-            href={siteConfig.links.linkedin}
-            className="transition-colors hover:text-foreground"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-          <a
-            href={siteConfig.links.email}
-            className=" transition-colors hover:text-foreground"
-          >
-            Email
+            Back to top ↑
           </a>
         </div>
-      </Container>
-
-      <Container className="border-t border-border py-4">
-        <p className="text-sm text-muted-foreground">
-          © {year} {siteConfig.name}. All rights reserved.
-        </p>
       </Container>
     </footer>
   );

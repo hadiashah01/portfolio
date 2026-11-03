@@ -1,3 +1,5 @@
+import { Download } from "lucide-react";
+
 import { Section } from "@/components/ui/Section";
 import {
   Card,
@@ -10,6 +12,7 @@ import { Badge } from "@/components/ui/Badge";
 import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/utils/cn";
 import { SectionHeading } from "@/components/sections";
+import { Reveal } from "@/components/motion";
 import { buildMetadata } from "@/config/metadata";
 import { aboutPageContent, personal } from "@/config/personal";
 
@@ -19,98 +22,125 @@ export const metadata = buildMetadata({
   path: "/about",
 });
 
+const profileRows = [
+  { label: "Based in", value: personal.location },
+  { label: "Education", value: personal.education },
+  { label: "Email", value: personal.email },
+];
+
 export default function AboutPage() {
   return (
     <>
-      <Section containerSize="lg" className="pt-20 sm:pt-24">
-        <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
-          <div className="space-y-6">
-            <SectionHeading
-              eyebrow={aboutPageContent.eyebrow}
-              title={aboutPageContent.title}
-              description={aboutPageContent.description}
-            />
-            <p className="text-muted-foreground max-w-2xl text-lg leading-8">
+      <Section containerSize="lg" className="border-b border-border pt-16 sm:pt-20">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <SectionHeading
+                as="h1"
+                eyebrow={aboutPageContent.eyebrow}
+                title={aboutPageContent.title}
+                description={aboutPageContent.description}
+              />
+            </Reveal>
+            <p className="mt-8 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
               {personal.intro}
             </p>
           </div>
-          <Card>
-            <CardHeader>
-              <CardTitle>{aboutPageContent.quickProfileTitle}</CardTitle>
-              <CardDescription>
-                {aboutPageContent.quickProfileDescription}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="border-border text-muted-foreground rounded-md border p-4 text-sm">
-                <p className="text-foreground font-medium">Education</p>
-                <p>{personal.education}</p>
-              </div>
-              <div className="border-border text-muted-foreground rounded-md border p-4 text-sm">
-                <p className="text-foreground font-medium">
-                  {aboutPageContent.quickProfileTitle}
+
+          <div className="lg:col-span-5">
+            <Reveal delay={80}>
+              <div className="rounded-xl border border-border bg-surface p-6 shadow-sm sm:p-7">
+                <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
+                  <h2 className="text-lg font-medium tracking-[-0.01em]">
+                    {aboutPageContent.quickProfileTitle}
+                  </h2>
+                  <span
+                    className="h-2 w-2 rounded-full bg-accent"
+                    aria-hidden="true"
+                  />
+                </div>
+                <p className="mt-4 text-sm leading-6 text-muted-foreground">
+                  {aboutPageContent.quickProfileDescription}
                 </p>
-                <p>{personal.location}</p>
-              </div>
-              <div className="border-border text-muted-foreground rounded-md border p-4 text-sm">
-                <p className="text-foreground font-medium">Email</p>
-                <p>{personal.email}</p>
-              </div>
-              <div className="pt-2">
+                <dl className="mt-2 divide-y divide-border">
+                  {profileRows.map((row) => (
+                    <div
+                      key={row.label}
+                      className="grid gap-1 py-3 sm:grid-cols-[100px_1fr]"
+                    >
+                      <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                        {row.label}
+                      </dt>
+                      <dd className="text-sm text-foreground">{row.value}</dd>
+                    </div>
+                  ))}
+                </dl>
                 <a
                   href={personal.resumePath}
                   download
                   className={cn(
-                    buttonVariants({ variant: "outline", size: "sm" }),
-                    "w-full justify-center text-sm font-semibold"
+                    buttonVariants({ variant: "outline", size: "md" }),
+                    "mt-5 w-full",
                   )}
                 >
-                  Download Resume
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  Download resume
                 </a>
               </div>
-            </CardContent>
-          </Card>
+            </Reveal>
+          </div>
         </div>
       </Section>
 
-      <Section className="border-border/70 border-t">
-        <div className="grid gap-6 lg:grid-cols-3">
-          <Card>
-            <CardHeader>
-              <CardTitle>{aboutPageContent.currentFocusTitle}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {personal.currentFocus.map((item) => (
-                <div key={item} className="text-muted-foreground text-sm">
-                  • {item}
-                </div>
-              ))}
-            </CardContent>
-          </Card>
+      <Section>
+        <div className="grid gap-6 md:grid-cols-3">
+          <Reveal>
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle>{aboutPageContent.currentFocusTitle}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {personal.currentFocus.map((item) => (
+                  <p
+                    key={item}
+                    className="text-sm leading-6 text-muted-foreground"
+                  >
+                    {item}
+                  </p>
+                ))}
+              </CardContent>
+            </Card>
+          </Reveal>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>{aboutPageContent.technicalInterestsTitle}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-wrap gap-2">
-              {personal.technicalInterests.map((interest) => (
-                <Badge key={interest} variant="outline">
-                  {interest}
-                </Badge>
-              ))}
-            </CardContent>
-          </Card>
+          <Reveal delay={70}>
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle>
+                  {aboutPageContent.technicalInterestsTitle}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-wrap gap-2">
+                {personal.technicalInterests.map((interest) => (
+                  <Badge key={interest} variant="outline">
+                    {interest}
+                  </Badge>
+                ))}
+              </CardContent>
+            </Card>
+          </Reveal>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>{aboutPageContent.learningPhilosophyTitle}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground text-sm leading-7">
-                {personal.learningPhilosophy}
-              </p>
-            </CardContent>
-          </Card>
+          <Reveal delay={140}>
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle>
+                  {aboutPageContent.learningPhilosophyTitle}
+                </CardTitle>
+                <CardDescription>
+                  {personal.learningPhilosophy}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </Reveal>
         </div>
       </Section>
     </>

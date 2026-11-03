@@ -17,8 +17,8 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#121416",
-          color: "#eceae4",
+          background: "#0e1211",
+          color: "#efece4",
           padding: "72px",
         }}
       >
@@ -27,7 +27,7 @@ export default function OpengraphImage() {
             fontSize: 28,
             letterSpacing: 6,
             textTransform: "uppercase",
-            color: "#4db6c6",
+            color: "#f08a5d",
           }}
         >
           Portfolio
@@ -36,11 +36,11 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 78, fontWeight: 700, lineHeight: 1.05 }}>
             {personal.name}
           </div>
-          <div style={{ marginTop: 24, fontSize: 36, color: "#a8a59c" }}>
+          <div style={{ marginTop: 24, fontSize: 36, color: "#a6ada7" }}>
             {personal.professionalTitle}
           </div>
         </div>
-        <div style={{ fontSize: 26, color: "#a8a59c" }}>
+        <div style={{ fontSize: 26, color: "#a6ada7" }}>
           {siteConfig.url.replace(/^https?:\/\//, "")}
         </div>
       </div>

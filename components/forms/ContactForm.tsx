@@ -93,16 +93,24 @@ export function ContactForm() {
             {...register("website")}
           />
         </div>
-        {submitStatus.type === "success" && (
-          <div className="rounded-md bg-success/10 border border-success/20 p-4 text-sm text-success">
-            {submitStatus.message}
-          </div>
-        )}
-        {submitStatus.type === "error" && (
-          <div className="rounded-md bg-error/10 border border-error/20 p-4 text-sm text-error">
-            {submitStatus.message}
-          </div>
-        )}
+        <div aria-live="polite" className="space-y-4">
+          {submitStatus.type === "success" && (
+            <div
+              role="status"
+              className="rounded-lg border border-success/25 bg-success/10 px-4 py-3 text-sm leading-6 text-success"
+            >
+              {submitStatus.message}
+            </div>
+          )}
+          {submitStatus.type === "error" && (
+            <div
+              role="alert"
+              className="rounded-lg border border-error/25 bg-error/10 px-4 py-3 text-sm leading-6 text-error"
+            >
+              {submitStatus.message}
+            </div>
+          )}
+        </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <label className="text-sm font-medium" htmlFor="name">
@@ -117,7 +125,7 @@ export function ContactForm() {
               {...register("name")}
             />
             {errors.name && (
-              <p id="name-error" className="text-xs text-error mt-1">
+              <p id="name-error" className="mt-1.5 text-xs text-error">
                 {errors.name.message}
               </p>
             )}
@@ -136,7 +144,7 @@ export function ContactForm() {
               {...register("email")}
             />
             {errors.email && (
-              <p id="email-error" className="text-xs text-error mt-1">
+              <p id="email-error" className="mt-1.5 text-xs text-error">
                 {errors.email.message}
               </p>
             )}
@@ -155,7 +163,7 @@ export function ContactForm() {
             {...register("subject")}
           />
           {errors.subject && (
-            <p id="subject-error" className="text-xs text-error mt-1">
+            <p id="subject-error" className="mt-1.5 text-xs text-error">
               {errors.subject.message}
             </p>
           )}
@@ -173,7 +181,7 @@ export function ContactForm() {
             {...register("message")}
           />
           {errors.message && (
-            <p id="message-error" className="text-xs text-error mt-1">
+            <p id="message-error" className="mt-1.5 text-xs text-error">
               {errors.message.message}
             </p>
           )}
