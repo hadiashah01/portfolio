@@ -13,6 +13,7 @@ export const publicNav: NavItem[] = [
 
 export const footerLinks: NavItem[] = [
   { title: "Home", href: "/" },
+  { title: "About", href: "/about" },
   { title: "Projects", href: "/projects" },
   { title: "Journey", href: "/journey" },
   { title: "Contact", href: "/contact" },

@@ -27,7 +27,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b bg-background/85 backdrop-blur-md transition-colors duration-300",
+        "bg-background/85 sticky top-0 z-50 border-b backdrop-blur-md transition-colors duration-300",
         scrolled ? "border-border" : "border-transparent",
       )}
     >
@@ -39,19 +39,17 @@ export function Navbar() {
         >
           <span
             aria-hidden="true"
-            className="grid h-8 w-8 shrink-0 place-items-center rounded-md border border-border bg-surface font-mono text-[10px] font-semibold tracking-[-0.04em] text-primary transition-colors group-hover:border-primary/40"
+            className="border-brand/30 bg-brand/10 text-primary group-hover:border-brand/60 group-hover:bg-brand/15 relative grid h-8 w-8 shrink-0 place-items-center rounded-lg border font-mono text-[10px] font-semibold tracking-[-0.04em] shadow-[0_0_24px_-10px_var(--brand)] transition-colors"
           >
             HS
+            <span className="ring-foreground/5 absolute inset-0 rounded-lg ring-1 ring-inset" />
           </span>
-          <span className="truncate text-sm font-medium tracking-[-0.01em] text-foreground">
+          <span className="text-foreground truncate text-sm font-semibold tracking-[-0.015em]">
             {siteConfig.name}
           </span>
         </Link>
 
-        <nav
-          aria-label="Primary"
-          className="hidden items-center gap-7 md:flex"
-        >
+        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
           {publicNav.map((item) => {
             const isActive =
               item.href === "/"
@@ -64,9 +62,9 @@ export function Navbar() {
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "relative py-1 text-sm transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-200 hover:text-foreground hover:after:scale-x-100",
+                  "after:bg-brand hover:text-foreground relative py-1 text-sm transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:transition-transform after:duration-200 hover:after:scale-x-100",
                   isActive
-                    ? "font-medium text-foreground after:scale-x-100"
+                    ? "text-foreground font-medium after:scale-x-100"
                     : "text-muted-foreground",
                 )}
               >

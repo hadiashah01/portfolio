@@ -9,9 +9,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-primary text-primary-foreground hover:bg-primary/90",
-        secondary:
-          "bg-foreground text-background hover:bg-foreground/90",
+        primary:
+          "brand-gradient text-primary-foreground shadow-[0_14px_34px_-18px_var(--brand)] hover:brightness-110",
+        secondary: "bg-foreground text-background hover:bg-foreground/90",
         outline:
           "border border-border bg-surface/60 text-foreground hover:border-foreground/25 hover:bg-muted",
         ghost: "bg-transparent text-foreground hover:bg-muted",
@@ -40,15 +40,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {
-      className,
-      variant,
-      size,
-      loading = false,
-      disabled,
-      children,
-      ...props
-    },
+    { className, variant, size, loading = false, disabled, children, ...props },
     ref,
   ) => {
     return (

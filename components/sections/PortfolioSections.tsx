@@ -32,15 +32,18 @@ export function SectionHeading({
   return (
     <div className={cn("max-w-2xl", className)}>
       <div className="flex items-center gap-3">
-        <span className="h-px w-8 bg-accent" aria-hidden="true" />
-        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-primary">
+        <span
+          className="from-brand h-px w-10 bg-gradient-to-r to-transparent"
+          aria-hidden="true"
+        />
+        <p className="text-primary font-mono text-[11px] font-medium tracking-[0.22em] uppercase">
           {eyebrow}
         </p>
       </div>
-      <Heading className="mt-5 text-3xl font-medium tracking-[-0.03em] text-foreground sm:text-4xl lg:text-[2.75rem] lg:leading-[1.05]">
+      <Heading className="text-foreground mt-5 text-3xl font-semibold tracking-[-0.04em] text-balance sm:text-4xl lg:text-[2.9rem] lg:leading-[1.02]">
         {title}
       </Heading>
-      <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+      <p className="text-muted-foreground mt-4 text-base leading-7 sm:text-lg sm:leading-8">
         {description}
       </p>
     </div>
@@ -55,19 +58,25 @@ type ProjectCardProps = {
   headingLevel?: "h2" | "h3";
 };
 
-function ProjectLinks({ project, compact = false }: { project: Project; compact?: boolean }) {
+function ProjectLinks({
+  project,
+  compact = false,
+}: {
+  project: Project;
+  compact?: boolean;
+}) {
   if (!project.githubUrl && !project.demoUrl) return null;
 
   if (compact) {
     return (
-      <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-border pt-5">
+      <div className="border-border mt-auto flex flex-wrap items-center gap-x-5 gap-y-3 border-t pt-5">
         {project.githubUrl ? (
           <Link
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${project.title} on GitHub`}
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline-offset-4 hover:underline"
+            className="text-foreground inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline"
           >
             <Github className="h-4 w-4" aria-hidden="true" />
             GitHub
@@ -79,12 +88,12 @@ function ProjectLinks({ project, compact = false }: { project: Project; compact?
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${project.title} live demo`}
-            className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-primary underline-offset-4 hover:underline"
+            className="group/link text-primary inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline"
           >
             <ExternalLink className="h-4 w-4" aria-hidden="true" />
             Live demo
             <ArrowUpRight
-              className="h-3.5 w-3.5 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+              className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
               aria-hidden="true"
             />
           </Link>
@@ -145,7 +154,7 @@ function ProjectPreview({
   );
 
   return (
-    <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-muted">
+    <div className="border-border bg-muted relative aspect-[16/10] overflow-hidden rounded-xl border">
       {hasImage ? (
         <Image
           src={project.image as string}
@@ -157,12 +166,12 @@ function ProjectPreview({
         />
       ) : (
         <div className="grid h-full w-full place-items-center px-6 text-center">
-          <span className="font-serif text-4xl italic text-muted-foreground/60">
+          <span className="text-foreground/25 text-2xl font-semibold tracking-[-0.035em] uppercase">
             {project.title}
           </span>
         </div>
       )}
-      <span className="absolute top-4 left-4 rounded-full border border-border bg-background/85 px-2.5 py-1 font-mono text-[10px] tracking-[0.14em] text-foreground backdrop-blur-sm">
+      <span className="border-border bg-background/85 text-foreground absolute top-4 left-4 rounded-full border px-2.5 py-1 font-mono text-[10px] tracking-[0.14em] backdrop-blur-sm">
         {String(index + 1).padStart(2, "0")}
       </span>
     </div>
@@ -184,7 +193,7 @@ export function ProjectCard({
     return (
       <article
         aria-labelledby={headingId}
-        className="group grid gap-8 border-t border-border pt-10 lg:grid-cols-12 lg:gap-10"
+        className="group border-border grid gap-8 border-t pt-10 lg:grid-cols-12 lg:gap-10"
       >
         <div
           className={cn(
@@ -206,40 +215,40 @@ export function ProjectCard({
             index % 2 === 1 ? "lg:order-1" : "lg:order-2",
           )}
         >
-          <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+          <div className="text-muted-foreground flex items-center gap-3 font-mono text-[10px] tracking-[0.18em] uppercase">
             <span className="text-primary">{projectNumber}</span>
-            <span className="h-px w-6 bg-border" aria-hidden="true" />
+            <span className="bg-border h-px w-6" aria-hidden="true" />
             <span>{project.featured ? "Featured project" : "Project"}</span>
           </div>
 
           <ProjectHeading
             id={headingId}
-            className="mt-3 text-2xl font-medium tracking-[-0.02em] text-foreground sm:text-3xl"
+            className="text-foreground mt-3 text-2xl font-medium tracking-[-0.02em] sm:text-3xl"
           >
             {project.title}
           </ProjectHeading>
-          <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">
+          <p className="text-muted-foreground mt-3 text-sm leading-7 sm:text-base">
             {project.description}
           </p>
 
           {project.problem || project.solution ? (
-            <dl className="mt-6 space-y-4 border-t border-border pt-5">
+            <dl className="border-border mt-6 space-y-4 border-t pt-5">
               {project.problem ? (
                 <div>
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                  <dt className="text-muted-foreground font-mono text-[10px] tracking-[0.18em] uppercase">
                     Problem
                   </dt>
-                  <dd className="mt-1.5 text-sm leading-7 text-foreground/80">
+                  <dd className="text-foreground/80 mt-1.5 text-sm leading-7">
                     {project.problem}
                   </dd>
                 </div>
               ) : null}
               {project.solution ? (
                 <div>
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                  <dt className="text-muted-foreground font-mono text-[10px] tracking-[0.18em] uppercase">
                     Solution
                   </dt>
-                  <dd className="mt-1.5 text-sm leading-7 text-foreground/80">
+                  <dd className="text-foreground/80 mt-1.5 text-sm leading-7">
                     {project.solution}
                   </dd>
                 </div>
@@ -270,7 +279,7 @@ export function ProjectCard({
   return (
     <article
       aria-labelledby={headingId}
-      className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface transition-colors duration-300 hover:border-foreground/20"
+      className="group border-border bg-surface hover:border-brand/40 flex h-full flex-col overflow-hidden rounded-2xl border transition-[border-color,box-shadow] duration-300 hover:shadow-[0_30px_80px_-50px_var(--brand)]"
     >
       <div className="p-2.5 pb-0">
         <ProjectPreview
@@ -284,12 +293,12 @@ export function ProjectCard({
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="text-muted-foreground font-mono text-[10px] tracking-[0.18em] uppercase">
               {projectNumber} / Project
             </p>
             <ProjectHeading
               id={headingId}
-              className="mt-2 text-xl font-medium tracking-[-0.02em] text-foreground sm:text-2xl"
+              className="text-foreground mt-2 text-xl font-medium tracking-[-0.02em] sm:text-2xl"
             >
               {project.title}
             </ProjectHeading>
@@ -301,7 +310,7 @@ export function ProjectCard({
           ) : null}
         </div>
 
-        <p className="mt-3 text-sm leading-7 text-muted-foreground">
+        <p className="text-muted-foreground mt-3 text-sm leading-7">
           {project.description}
         </p>
 
@@ -340,15 +349,15 @@ export function TimelineItem({
   const TimelineHeading = headingLevel;
 
   return (
-    <li className="grid gap-2 border-t border-border py-6 sm:grid-cols-[96px_1fr] sm:gap-6">
-      <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
+    <li className="border-border grid gap-2 border-t py-6 sm:grid-cols-[96px_1fr] sm:gap-6">
+      <p className="text-primary font-mono text-[11px] tracking-[0.18em] uppercase">
         {year}
       </p>
       <div>
-        <TimelineHeading className="text-lg font-medium tracking-[-0.01em] text-foreground sm:text-xl">
+        <TimelineHeading className="text-foreground text-lg font-medium tracking-[-0.01em] sm:text-xl">
           {title}
         </TimelineHeading>
-        <p className="mt-2 text-sm leading-7 text-muted-foreground">
+        <p className="text-muted-foreground mt-2 text-sm leading-7">
           {description}
         </p>
       </div>
@@ -375,7 +384,7 @@ export function ContactMethodList({ methods }: ContactMethodListProps) {
   };
 
   return (
-    <ul className="divide-y divide-border border-y border-border">
+    <ul className="divide-border border-border divide-y border-y">
       {methods.map((method) => {
         const isEmail = method.label.toLowerCase() === "email";
         const isPhone = method.label.toLowerCase() === "phone";
@@ -391,21 +400,21 @@ export function ContactMethodList({ methods }: ContactMethodListProps) {
               href={finalHref}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noopener noreferrer" : undefined}
-              className="group flex min-w-0 items-center gap-4 py-4 transition-colors hover:text-primary"
+              className="group hover:text-primary flex min-w-0 items-center gap-4 py-4 transition-colors"
             >
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border bg-surface text-primary transition-colors group-hover:border-primary/30">
+              <span className="border-border bg-surface text-primary group-hover:border-primary/30 grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-colors">
                 {getIcon(method.label)}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                <span className="text-muted-foreground block font-mono text-[10px] tracking-[0.18em] uppercase">
                   {method.label}
                 </span>
-                <span className="mt-0.5 block truncate text-sm text-foreground">
+                <span className="text-foreground mt-0.5 block truncate text-sm">
                   {method.value}
                 </span>
               </span>
               <ArrowUpRight
-                className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"
               />
             </a>

@@ -27,7 +27,7 @@ export const siteConfig = {
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:3000"),
   locale: "en_US",
-  themeColor: "#0b4a52",
+  themeColor: "#0a66c2",
   links: {
     github: personal.github,
     linkedin: personal.linkedin,

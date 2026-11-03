@@ -31,7 +31,10 @@ const profileRows = [
 export default function AboutPage() {
   return (
     <>
-      <Section containerSize="lg" className="border-b border-border pt-16 sm:pt-20">
+      <Section
+        containerSize="lg"
+        className="border-border border-b pt-16 sm:pt-20"
+      >
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-7">
             <Reveal>
@@ -42,36 +45,36 @@ export default function AboutPage() {
                 description={aboutPageContent.description}
               />
             </Reveal>
-            <p className="mt-8 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
+            <p className="text-muted-foreground mt-8 max-w-2xl text-base leading-8 sm:text-lg">
               {personal.intro}
             </p>
           </div>
 
           <div className="lg:col-span-5">
             <Reveal delay={80}>
-              <div className="rounded-xl border border-border bg-surface p-6 shadow-sm sm:p-7">
-                <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
+              <div className="border-border bg-surface rounded-xl border p-6 shadow-sm sm:p-7">
+                <div className="border-border flex items-center justify-between gap-4 border-b pb-4">
                   <h2 className="text-lg font-medium tracking-[-0.01em]">
                     {aboutPageContent.quickProfileTitle}
                   </h2>
                   <span
-                    className="h-2 w-2 rounded-full bg-accent"
+                    className="bg-brand h-2 w-2 rounded-full shadow-[0_0_18px_var(--brand)]"
                     aria-hidden="true"
                   />
                 </div>
-                <p className="mt-4 text-sm leading-6 text-muted-foreground">
+                <p className="text-muted-foreground mt-4 text-sm leading-6">
                   {aboutPageContent.quickProfileDescription}
                 </p>
-                <dl className="mt-2 divide-y divide-border">
+                <dl className="divide-border mt-2 divide-y">
                   {profileRows.map((row) => (
                     <div
                       key={row.label}
                       className="grid gap-1 py-3 sm:grid-cols-[100px_1fr]"
                     >
-                      <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                      <dt className="text-muted-foreground font-mono text-[10px] tracking-[0.16em] uppercase">
                         {row.label}
                       </dt>
-                      <dd className="text-sm text-foreground">{row.value}</dd>
+                      <dd className="text-foreground text-sm">{row.value}</dd>
                     </div>
                   ))}
                 </dl>
@@ -103,7 +106,7 @@ export default function AboutPage() {
                 {personal.currentFocus.map((item) => (
                   <p
                     key={item}
-                    className="text-sm leading-6 text-muted-foreground"
+                    className="text-muted-foreground text-sm leading-6"
                   >
                     {item}
                   </p>
@@ -135,9 +138,7 @@ export default function AboutPage() {
                 <CardTitle>
                   {aboutPageContent.learningPhilosophyTitle}
                 </CardTitle>
-                <CardDescription>
-                  {personal.learningPhilosophy}
-                </CardDescription>
+                <CardDescription>{personal.learningPhilosophy}</CardDescription>
               </CardHeader>
             </Card>
           </Reveal>

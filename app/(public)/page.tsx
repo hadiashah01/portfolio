@@ -30,32 +30,33 @@ export default function HomePage() {
     <>
       <Section
         containerSize="lg"
-        className="border-b border-border pt-14 pb-14 sm:pt-20 sm:pb-20"
+        className="border-border border-b pt-14 pb-14 sm:pt-20 sm:pb-20"
         aria-labelledby="hero-heading"
       >
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-8">
-            <div className="hero-rise flex items-start gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="relative mt-[7px] flex h-2 w-2 shrink-0" aria-hidden="true">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-accent/35" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            <div className="hero-rise text-muted-foreground flex items-start gap-3 font-mono text-[11px] tracking-[0.2em] uppercase">
+              <span
+                className="relative mt-[7px] flex h-2 w-2 shrink-0"
+                aria-hidden="true"
+              >
+                <span className="bg-brand/35 absolute inline-flex h-full w-full rounded-full" />
+                <span className="bg-brand relative inline-flex h-2 w-2 rounded-full" />
               </span>
               <span className="max-w-md">{personal.availability}</span>
             </div>
 
             <h1
               id="hero-heading"
-              className="hero-rise mt-7 text-display text-foreground"
+              className="hero-rise text-display text-foreground mt-7 font-semibold tracking-[-0.055em] uppercase"
               style={{ animationDelay: "80ms" }}
             >
               <span className="block">{firstName}</span>{" "}
-              <span className="block font-serif font-normal italic text-primary">
-                {lastName}
-              </span>
+              <span className="brand-gradient-text block">{lastName}</span>
             </h1>
 
             <p
-              className="hero-rise mt-8 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl sm:leading-9"
+              className="hero-rise text-muted-foreground mt-8 max-w-2xl text-lg leading-8 sm:text-xl sm:leading-9"
               style={{ animationDelay: "160ms" }}
             >
               {personal.tagline}
@@ -82,42 +83,44 @@ export default function HomePage() {
           </div>
 
           <aside
-            className="hero-rise lg:col-span-4 lg:border-l lg:border-border lg:pl-8"
+            className="hero-rise lg:border-border lg:col-span-4 lg:border-l lg:pl-8"
             style={{ animationDelay: "320ms" }}
           >
-            <div className="border-b border-border pb-3">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+            <div className="border-border border-b pb-3">
+              <p className="text-muted-foreground font-mono text-[11px] tracking-[0.2em] uppercase">
                 {homePageContent.currentFocusTitle}
               </p>
             </div>
-            <p className="mt-4 text-sm leading-6 text-muted-foreground">
+            <p className="text-muted-foreground mt-4 text-sm leading-6">
               {homePageContent.currentFocusDescription}
             </p>
             <ul className="mt-6 space-y-4">
               {personal.currentFocus.map((item, index) => (
                 <li
                   key={item}
-                  className="grid grid-cols-[24px_1fr] gap-3 border-t border-border pt-4"
+                  className="border-border grid grid-cols-[24px_1fr] gap-3 border-t pt-4"
                 >
-                  <span className="font-mono text-[11px] text-primary">
+                  <span className="text-primary font-mono text-[11px]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-sm leading-6 text-foreground/80">
+                  <span className="text-foreground/80 text-sm leading-6">
                     {item}
                   </span>
                 </li>
               ))}
             </ul>
-            <div className="mt-6 border-t border-border pt-4">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+            <div className="border-border mt-6 border-t pt-4">
+              <p className="text-muted-foreground font-mono text-[11px] tracking-[0.2em] uppercase">
                 Based in
               </p>
-              <p className="mt-2 text-sm text-foreground">{personal.location}</p>
+              <p className="text-foreground mt-2 text-sm">
+                {personal.location}
+              </p>
             </div>
           </aside>
         </div>
 
-        <div className="mt-14 flex items-center justify-between border-t border-border pt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+        <div className="border-border text-muted-foreground mt-14 flex items-center justify-between border-t pt-4 font-mono text-[11px] tracking-[0.18em] uppercase">
           <span className="inline-flex items-center gap-2">
             <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
             Selected work
@@ -128,7 +131,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section className="border-b border-border">
+      <Section className="border-border border-b">
         <div className="space-y-10">
           <Reveal>
             <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
@@ -139,11 +142,11 @@ export default function HomePage() {
               />
               <Link
                 href="/projects"
-                className="group inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-foreground underline-offset-4 hover:underline"
+                className="group text-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline"
               >
                 All projects
                 <ArrowUpRight
-                  className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   aria-hidden="true"
                 />
               </Link>
@@ -152,11 +155,7 @@ export default function HomePage() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
             {featuredProjects.map((project, index) => (
-              <Reveal
-                key={project.slug}
-                delay={index * 70}
-                className="h-full"
-              >
+              <Reveal key={project.slug} delay={index * 70} className="h-full">
                 <ProjectCard project={project} index={index} />
               </Reveal>
             ))}
@@ -164,7 +163,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section className="border-b border-border">
+      <Section className="border-border border-b">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <Reveal>
@@ -177,11 +176,11 @@ export default function HomePage() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="border-t border-border">
+            <div className="border-border border-t">
               {skillCategories.map((category, index) => (
                 <Reveal key={category.title} delay={index * 60}>
-                  <div className="grid gap-3 border-b border-border py-6 sm:grid-cols-[180px_1fr] sm:gap-6">
-                    <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  <div className="border-border grid gap-3 border-b py-6 sm:grid-cols-[180px_1fr] sm:gap-6">
+                    <h3 className="text-muted-foreground font-mono text-[11px] tracking-[0.18em] uppercase">
                       {category.title}
                     </h3>
                     <ul className="flex flex-wrap gap-2">
@@ -199,7 +198,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section className="border-b border-border">
+      <Section className="border-border border-b">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <Reveal>
@@ -230,16 +229,20 @@ export default function HomePage() {
 
       <Section>
         <Reveal>
-          <div className="rounded-2xl bg-foreground px-6 py-12 text-background sm:px-10 sm:py-14 lg:px-14">
-            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div className="footer-canvas border-footer-border text-footer-foreground relative overflow-hidden rounded-[2rem] border px-6 py-12 sm:px-10 sm:py-14 lg:px-14">
+            <div
+              aria-hidden="true"
+              className="footer-grid pointer-events-none absolute inset-0 opacity-40"
+            />
+            <div className="relative z-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-background/60">
+                <p className="text-footer-muted font-mono text-[11px] tracking-[0.22em] uppercase">
                   {homePageContent.ctaEyebrow}
                 </p>
-                <h2 className="mt-4 max-w-2xl text-3xl font-medium tracking-[-0.03em] sm:text-4xl lg:text-5xl">
+                <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.04em] sm:text-4xl lg:text-5xl">
                   {homePageContent.ctaTitle}
                 </h2>
-                <p className="mt-4 max-w-xl text-base leading-7 text-background/70">
+                <p className="text-footer-muted mt-4 max-w-xl text-base leading-7">
                   {homePageContent.ctaDescription}
                 </p>
               </div>
@@ -247,7 +250,7 @@ export default function HomePage() {
                 href="/contact"
                 className={cn(
                   buttonVariants({ variant: "secondary", size: "lg" }),
-                  "bg-background text-foreground hover:bg-background/90",
+                  "bg-footer-foreground text-footer hover:bg-footer-foreground/90",
                 )}
               >
                 {homePageContent.ctaLinkLabel}

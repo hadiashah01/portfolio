@@ -20,6 +20,12 @@
   --color-warning: var(--warning);
   --color-error: var(--error);
   --color-info: var(--info);
+  --color-brand: var(--brand);
+  --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
+  --color-footer-muted: var(--footer-muted);
+  --color-footer-border: var(--footer-border);
+  --color-footer-accent: var(--footer-accent);
   --font-sans: var(--font-geist-sans);
   --font-serif: var(--font-instrument-serif);
   --font-mono: var(--font-geist-mono);
@@ -37,43 +43,55 @@
 }
 
 :root {
-  --background: #f5f2ea;
-  --foreground: #171a19;
-  --surface: #fbfaf5;
+  --background: #f3f7fc;
+  --foreground: #0a1420;
+  --surface: #ffffff;
   --surface-elevated: #ffffff;
-  --border: #ddd8cb;
-  --muted: #ece8dd;
-  --muted-foreground: #5b625d;
-  --primary: #0b4a52;
-  --primary-foreground: #f5f2ea;
-  --secondary: #e7e1d4;
-  --secondary-foreground: #171a19;
-  --accent: #b4471c;
-  --accent-foreground: #ffffff;
-  --success: #2f6b4f;
-  --warning: #9a6b00;
-  --error: #9b2c2c;
-  --info: #1d5b8f;
+  --border: #d9e4f0;
+  --muted: #e7eef7;
+  --muted-foreground: #566a80;
+  --primary: #0a66c2;
+  --primary-foreground: #ffffff;
+  --secondary: #dcebfa;
+  --secondary-foreground: #08243d;
+  --accent: #3ca2fa;
+  --accent-foreground: #04121f;
+  --brand: #3ca2fa;
+  --success: #287a55;
+  --warning: #906600;
+  --error: #a93232;
+  --info: #1a63a8;
+  --footer: #070b11;
+  --footer-foreground: #f4f8ff;
+  --footer-muted: #91a7bf;
+  --footer-border: #1b2837;
+  --footer-accent: #3ca2fa;
 }
 
 .dark {
-  --background: #0e1211;
-  --foreground: #efece4;
-  --surface: #151b19;
-  --surface-elevated: #1b2220;
-  --border: #2a3330;
-  --muted: #1b2220;
-  --muted-foreground: #a6ada7;
-  --primary: #5fc4c9;
-  --primary-foreground: #06201f;
-  --secondary: #232c29;
-  --secondary-foreground: #efece4;
-  --accent: #f08a5d;
-  --accent-foreground: #201009;
+  --background: #080c12;
+  --foreground: #eef5ff;
+  --surface: #0e1620;
+  --surface-elevated: #121c28;
+  --border: #203042;
+  --muted: #101923;
+  --muted-foreground: #91a6bc;
+  --primary: #3ca2fa;
+  --primary-foreground: #04121f;
+  --secondary: #142434;
+  --secondary-foreground: #eaf3ff;
+  --accent: #7dd3fc;
+  --accent-foreground: #04121f;
+  --brand: #3ca2fa;
   --success: #5fbf8b;
   --warning: #e0b353;
   --error: #e08383;
   --info: #82aede;
+  --footer: #05080d;
+  --footer-foreground: #f4f8ff;
+  --footer-muted: #8fa4ba;
+  --footer-border: #182433;
+  --footer-accent: #3ca2fa;
 }
 
 @layer base {
@@ -129,6 +147,74 @@
 }
 
 @layer utilities {
+  .site-canvas {
+    background-color: var(--background);
+    background-image:
+      radial-gradient(
+        70rem 44rem at 84% -12%,
+        color-mix(in srgb, var(--brand) 14%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        48rem 32rem at 0% 8%,
+        color-mix(in srgb, var(--brand) 7%, transparent),
+        transparent 72%
+      );
+  }
+
+  .footer-canvas {
+    background-color: var(--footer);
+    background-image:
+      radial-gradient(
+        90rem 54rem at 50% -8%,
+        color-mix(in srgb, var(--footer-accent) 20%, transparent),
+        transparent 66%
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--footer-accent) 5%, transparent) 0%,
+        transparent 32%
+      );
+  }
+
+  .footer-grid {
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--footer-foreground) 9%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--footer-foreground) 9%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 64px 64px;
+    -webkit-mask-image: linear-gradient(to bottom, black, transparent 78%);
+    mask-image: linear-gradient(to bottom, black, transparent 78%);
+  }
+
+  .brand-gradient {
+    background-image: linear-gradient(
+      110deg,
+      var(--primary),
+      var(--brand) 48%,
+      #7dd3fc
+    );
+  }
+
+  .brand-gradient-text {
+    background-image: linear-gradient(
+      110deg,
+      var(--primary),
+      var(--brand) 48%,
+      #7dd3fc
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
   .hero-rise {
     animation: hero-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
