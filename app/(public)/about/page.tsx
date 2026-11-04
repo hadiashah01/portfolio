@@ -3,7 +3,7 @@ import { Download } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { buttonVariants } from "@/components/ui/Button";
 import { PageIntro } from "@/components/sections";
-import { Reveal } from "@/components/motion";
+import { Reveal, ScrollRevealText } from "@/components/motion";
 import { cn } from "@/utils/cn";
 import { buildMetadata } from "@/config/metadata";
 import { aboutPageContent, personal } from "@/config/personal";
@@ -69,11 +69,9 @@ export default function AboutPage() {
           </div>
 
           <div className="lg:col-span-8">
-            <Reveal delay={80}>
-              <p className="text-foreground max-w-3xl text-2xl leading-10 tracking-[-0.025em] sm:text-3xl sm:leading-[1.35]">
-                {personal.intro}
-              </p>
-            </Reveal>
+            <p className="text-foreground max-w-3xl text-2xl leading-10 tracking-[-0.025em] sm:text-3xl sm:leading-[1.35]">
+              <ScrollRevealText>{personal.intro}</ScrollRevealText>
+            </p>
           </div>
         </div>
       </Section>
@@ -112,16 +110,16 @@ export default function AboutPage() {
       </Section>
 
       <Section className="border-border border-t">
-        <Reveal>
-          <div className="max-w-5xl">
-            <p className="text-primary text-sm font-medium">
-              {aboutPageContent.learningPhilosophyTitle}
-            </p>
-            <blockquote className="text-foreground mt-5 text-3xl leading-[1.25] font-semibold tracking-[-0.04em] sm:text-4xl sm:leading-[1.2] lg:text-5xl">
-              &ldquo;{personal.learningPhilosophy}&rdquo;
-            </blockquote>
-          </div>
-        </Reveal>
+        <div className="max-w-5xl">
+          <p className="text-primary text-sm font-medium">
+            {aboutPageContent.learningPhilosophyTitle}
+          </p>
+          <blockquote className="text-foreground mt-5 text-3xl leading-[1.25] font-semibold tracking-[-0.04em] sm:text-4xl sm:leading-[1.2] lg:text-5xl">
+            <ScrollRevealText>
+              {`\u201c${personal.learningPhilosophy}\u201d`}
+            </ScrollRevealText>
+          </blockquote>
+        </div>
       </Section>
     </>
   );

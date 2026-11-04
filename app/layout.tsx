@@ -35,6 +35,9 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <noscript>
+          <style>{`.scroll-reveal-word { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

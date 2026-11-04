@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { ArrowUpRight, Github, Linkedin, Mail, Phone } from "lucide-react";
 
 import { cn } from "@/utils/cn";
+import { ScrollRevealText } from "@/components/motion";
 import type { Project } from "@/config/projects";
 
 type SectionHeadingProps = {
@@ -12,6 +13,7 @@ type SectionHeadingProps = {
   description: string;
   className?: string;
   as?: "h1" | "h2";
+  revealTitle?: boolean;
 };
 
 export function SectionHeading({
@@ -20,12 +22,13 @@ export function SectionHeading({
   description,
   className,
   as: Heading = "h2",
+  revealTitle = false,
 }: SectionHeadingProps) {
   return (
     <div className={cn("max-w-3xl", className)}>
       <p className="text-primary text-sm font-medium">{eyebrow}</p>
       <Heading className="text-foreground mt-3 text-3xl font-semibold tracking-[-0.045em] text-balance sm:text-4xl lg:text-[2.85rem] lg:leading-[1.05]">
-        {title}
+        {revealTitle ? <ScrollRevealText>{title}</ScrollRevealText> : title}
       </Heading>
       <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8">
         {description}

@@ -1,5 +1,5 @@
 import { Section } from "@/components/ui/Section";
-import { Reveal } from "@/components/motion";
+import { Reveal, ScrollRevealText } from "@/components/motion";
 import { TimelineItem, PageIntro } from "@/components/sections";
 import { buildMetadata } from "@/config/metadata";
 import { journeyPageContent, personal } from "@/config/personal";
@@ -23,17 +23,17 @@ export default function JourneyPage() {
 
       <div className="border-border mt-16 grid gap-12 border-t pt-10 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
-          <Reveal>
-            <h2 className="text-foreground text-lg font-semibold">
+          <h2 className="text-foreground text-lg font-semibold">
+            <ScrollRevealText>
               {journeyPageContent.currentDirectionTitle}
-            </h2>
-            <p className="text-muted-foreground mt-3 text-base leading-7">
-              {journeyPageContent.currentDirectionDescription}
-            </p>
-            <p className="text-muted-foreground border-border mt-6 border-t pt-5 text-sm leading-7">
-              {personal.learningPhilosophy}
-            </p>
-          </Reveal>
+            </ScrollRevealText>
+          </h2>
+          <p className="text-muted-foreground mt-3 text-base leading-7">
+            {journeyPageContent.currentDirectionDescription}
+          </p>
+          <p className="text-muted-foreground border-border mt-6 border-t pt-5 text-sm leading-7">
+            {personal.learningPhilosophy}
+          </p>
         </div>
 
         <div className="lg:col-span-8">

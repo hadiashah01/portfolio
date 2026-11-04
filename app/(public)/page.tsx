@@ -150,22 +150,21 @@ export default function HomePage() {
       </Section>
 
       <Section id="selected-work" className="border-border border-t">
-        <Reveal>
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <SectionHeading
-              eyebrow={homePageContent.featuredProjectsEyebrow}
-              title={homePageContent.featuredProjectsTitle}
-              description={homePageContent.featuredProjectsDescription}
-            />
-            <Link
-              href="/projects"
-              className="link-underline text-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold"
-            >
-              All projects
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-        </Reveal>
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading
+            eyebrow={homePageContent.featuredProjectsEyebrow}
+            title={homePageContent.featuredProjectsTitle}
+            description={homePageContent.featuredProjectsDescription}
+            revealTitle
+          />
+          <Link
+            href="/projects"
+            className="link-underline text-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold"
+          >
+            All projects
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
 
         <div className="mt-12 grid gap-x-8 gap-y-14 md:grid-cols-2">
           {featuredProjects.map((project, index) => (
