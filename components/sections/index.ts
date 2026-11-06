@@ -4,4 +4,5 @@ export {
   ProjectCard,
   TimelineItem,
   ContactMethodList,
+  ExpandableProjectGallery,
 } from "./PortfolioSections";

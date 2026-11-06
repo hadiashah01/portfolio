@@ -5,8 +5,8 @@ import { Section } from "@/components/ui/Section";
 import { buttonVariants } from "@/components/ui/Button";
 import {
   SectionHeading,
-  ProjectCard,
   TimelineItem,
+  ExpandableProjectGallery,
 } from "@/components/sections";
 import { Reveal } from "@/components/motion";
 import { cn } from "@/utils/cn";
@@ -64,8 +64,13 @@ export default function HomePage() {
                     size: "lg",
                   })}
                 >
-                  {homePageContent.primaryCtaLabel}
-                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  <span className="flow-label relative z-[1] transition-transform duration-[800ms] ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none motion-reduce:transform-none">
+                    {homePageContent.primaryCtaLabel}
+                  </span>
+                  <ArrowUpRight
+                    className="flow-arrow relative z-[1] h-4 w-4 transition-transform duration-[800ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transform-none motion-reduce:transition-none"
+                    aria-hidden="true"
+                  />
                 </Link>
                 <Link
                   href="/contact"
@@ -166,13 +171,9 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="mt-12 grid gap-x-8 gap-y-14 md:grid-cols-2">
-          {featuredProjects.map((project, index) => (
-            <Reveal key={project.slug} delay={index * 70} className="h-full">
-              <ProjectCard project={project} index={index} />
-            </Reveal>
-          ))}
-        </div>
+        <Reveal>
+          <ExpandableProjectGallery projects={featuredProjects} />
+        </Reveal>
       </Section>
 
       <Section className="border-border border-t">
@@ -246,12 +247,12 @@ export default function HomePage() {
               <Link
                 href="/contact"
                 className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "bg-footer-foreground text-footer hover:bg-footer-foreground/90 mt-8",
+                  buttonVariants({ variant: "footer", size: "lg" }),
+                  "mt-8",
                 )}
               >
-                {homePageContent.ctaLinkLabel}
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                <span className="relative z-[1]">{homePageContent.ctaLinkLabel}</span>
+                <ArrowUpRight className="relative z-[1] h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
           </div>

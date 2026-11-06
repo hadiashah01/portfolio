@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { ArrowUpRight, Github, Linkedin, Mail, Phone } from "lucide-react";
 
 import { cn } from "@/utils/cn";
@@ -280,6 +282,98 @@ export function ProjectCard({
 
       <ProjectLinks project={project} className="mt-auto pt-5" />
     </article>
+  );
+}
+
+type ExpandableProjectGalleryProps = {
+  projects: Project[];
+  priority?: boolean;
+};
+
+export function ExpandableProjectGallery({
+  projects,
+  priority = false,
+}: ExpandableProjectGalleryProps) {
+  const [activeSlug, setActiveSlug] = useState(projects[0]?.slug ?? "");
+
+  return (
+    <div
+      className="mt-12 grid gap-5 md:grid-cols-2 lg:flex lg:h-[430px] lg:gap-3"
+      aria-label="Project collection"
+      onMouseLeave={() => {
+        if (projects[0]) setActiveSlug(projects[0].slug);
+      }}
+    >
+      {projects.map((project, index) => {
+        const isActive = activeSlug === project.slug;
+
+        return (
+          <article
+            key={project.slug}
+            className={cn(
+              "group relative min-h-[360px] overflow-hidden rounded-lg border border-border bg-muted md:min-h-[390px] lg:h-full lg:min-h-0 lg:flex-[1_1_0%] lg:transition-[flex-basis,flex-grow] lg:duration-700 lg:ease-[cubic-bezier(0.19,1,0.22,1)]",
+              isActive && "lg:flex-[3_1_0%]",
+            )}
+            onMouseEnter={() => setActiveSlug(project.slug)}
+            onFocusCapture={() => setActiveSlug(project.slug)}
+          >
+            <button
+              type="button"
+              className="absolute inset-0 z-10 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-primary"
+              aria-label={`Select ${project.title}`}
+              aria-expanded={isActive}
+              onClick={() => setActiveSlug(project.slug)}
+            />
+
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={`${project.title} website preview`}
+                fill
+                priority={priority && index === 0}
+                sizes="(min-width: 1024px) 45vw, (min-width: 768px) 50vw, 100vw"
+                className={cn(
+                  "object-cover object-top transition-transform duration-700 ease-out",
+                  isActive ? "scale-[1.01]" : "lg:grayscale-[45%] lg:group-hover:grayscale-0",
+                )}
+              />
+            ) : null}
+
+            <div className="absolute inset-x-0 bottom-0 z-[11] bg-[var(--gallery-overlay)]/90 px-5 pt-5 pb-5 text-[var(--gallery-overlay-foreground)] lg:px-6 lg:pb-6"            >
+              <p
+                className={cn(
+                  "text-xs font-medium text-white/75 uppercase transition-opacity duration-500",
+                  isActive ? "opacity-100" : "lg:opacity-70",
+                )}
+              >
+                {project.category ?? (project.featured ? "Featured project" : "Project")}
+              </p>
+              <h3 className="mt-2 text-xl font-semibold tracking-[-0.035em] text-white sm:text-2xl">
+                {project.title}
+              </h3>
+              <div
+                className={cn(
+                  "grid transition-[grid-template-rows,opacity,margin] duration-500",
+                  isActive
+                    ? "mt-3 grid-rows-[1fr] opacity-100"
+                    : "mt-3 grid-rows-[1fr] opacity-100 lg:mt-0 lg:grid-rows-[0fr] lg:opacity-0 lg:overflow-hidden",
+                )}
+              >
+                <div className="overflow-hidden">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="flow-link relative z-[12] inline-flex items-center gap-1.5 rounded-sm text-sm font-semibold text-white underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  >
+                    View Project
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
   );
 }
 

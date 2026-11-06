@@ -1,5 +1,5 @@
 import { Section } from "@/components/ui/Section";
-import { PageIntro, ProjectCard } from "@/components/sections";
+import { ExpandableProjectGallery, PageIntro } from "@/components/sections";
 import { Reveal } from "@/components/motion";
 import { buildMetadata } from "@/config/metadata";
 import { projects } from "@/config/projects";
@@ -24,27 +24,9 @@ export default function ProjectsPage() {
       </Section>
 
       <Section containerSize="lg" className="pt-0 pb-20 sm:pb-28">
-        <div className="space-y-16 sm:space-y-24">
-          {projects.map((project, index) => (
-            <Reveal key={project.slug}>
-              <div
-                className={
-                  index === 0
-                    ? undefined
-                    : "border-border border-t pt-16 sm:pt-24"
-                }
-              >
-                <ProjectCard
-                  project={project}
-                  index={index}
-                  variant="detailed"
-                  headingLevel="h2"
-                  priority={index === 0}
-                />
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal>
+          <ExpandableProjectGallery projects={projects} priority />
+        </Reveal>
       </Section>
     </>
   );

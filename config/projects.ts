@@ -1,6 +1,7 @@
 export type Project = {
   slug: string;
   title: string;
+  category?: string;
   description: string;
   problem?: string;
   solution?: string;
@@ -15,6 +16,7 @@ export const projects: Project[] = [
   {
     slug: "aaira-khan-salon-studio",
     title: "Aaira Khan Salon & Studio",
+    category: "Salon website",
     description:
       "A responsive salon website designed to bring service discovery, promotional offers, portfolio galleries, customer testimonials, and appointment inquiries into one cohesive digital experience.",
     problem:
@@ -37,6 +39,7 @@ export const projects: Project[] = [
   {
     slug: "fast-and-furious-cafe",
     title: "Fast & Furious Cafe",
+    category: "Restaurant website",
     description:
       "A responsive restaurant website built to make menu browsing, deal discovery, business information, and online ordering more accessible.",
     problem:
@@ -59,6 +62,7 @@ export const projects: Project[] = [
   {
     slug: "learnhub",
     title: "LearnHub",
+    category: "Learning platform",
     description:
       "A responsive learning platform interface featuring course discovery, course details, reusable layouts, and structured navigation.",
     problem:
@@ -81,6 +85,7 @@ export const projects: Project[] = [
   {
     slug: "bank-account-manager",
     title: "Bank Account Manager",
+    category: "Banking dashboard",
     description:
       "An interactive banking dashboard for managing multiple accounts, performing transactions, and monitoring account balances through a component-based React interface.",
     problem:
@@ -104,6 +109,7 @@ export const projects: Project[] = [
   {
     slug: "notecraft-notes-app",
     title: "NoteCraft — Notes App",
+    category: "Notes application",
     description:
       "A responsive notes management application that allows users to create, view, and delete notes through an interactive interface.",
     problem:
