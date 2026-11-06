@@ -9,14 +9,21 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-primary text-primary-foreground hover:bg-primary/90",
-        secondary: "bg-foreground text-background hover:bg-foreground/90",
+        primary:
+          "flow-fill-button group bg-primary text-primary-foreground border border-primary hover:text-primary hover:rounded-lg focus-visible:text-primary focus-visible:rounded-lg",
+        flow:
+          "flow-fill-button group bg-primary text-primary-foreground border border-primary hover:text-primary hover:rounded-lg focus-visible:text-primary focus-visible:rounded-lg",
+        footer:
+          "flow-fill-button group bg-footer-foreground text-footer border border-footer-foreground [--flow-fill:var(--footer)] [--flow-hover-text:var(--footer-foreground)] hover:rounded-lg hover:text-footer-foreground focus-visible:rounded-lg focus-visible:text-footer-foreground",
+        secondary:
+          "flow-fill-button group bg-foreground text-background border border-foreground [--flow-fill:var(--background)] [--flow-hover-text:var(--foreground)] hover:rounded-lg hover:text-foreground focus-visible:rounded-lg focus-visible:text-foreground",
         outline:
           "border border-border bg-transparent text-foreground hover:border-foreground/30 hover:bg-muted/60",
         ghost: "bg-transparent text-foreground hover:bg-muted",
         text: "bg-transparent px-0 text-primary underline-offset-4 hover:underline",
         icon: "bg-transparent text-foreground hover:bg-muted",
-        danger: "bg-error text-white hover:bg-error/90",
+        danger:
+          "flow-fill-button group bg-error text-white border border-error [--flow-fill:var(--surface)] [--flow-hover-text:var(--error)] hover:rounded-lg hover:text-error focus-visible:rounded-lg focus-visible:text-error",
       },
       size: {
         sm: "h-9 px-4 text-[13px]",
@@ -50,10 +57,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         aria-busy={loading || undefined}
         {...props}
       >
-        {loading ? (
-          <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-        ) : null}
-        {children}
+        <span className="relative z-[1] inline-flex items-center justify-center gap-2">
+          {loading ? (
+            <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+          ) : null}
+          {children}
+        </span>
       </button>
     );
   },

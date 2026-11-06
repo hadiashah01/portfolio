@@ -18,7 +18,7 @@ export default function NotFound() {
         href="/"
         className={cn(buttonVariants({ variant: "primary" }), "mt-8")}
       >
-        Return home
+        <span className="relative z-[1]">Return home</span>
       </Link>
     </Container>
   );

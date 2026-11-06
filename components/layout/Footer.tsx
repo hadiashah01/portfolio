@@ -83,7 +83,7 @@ export function Footer() {
   const lastName = nameRemainder.join(" ");
 
   return (
-    <footer className="footer-canvas border-footer-border text-footer-foreground relative overflow-hidden rounded-t-[2rem] border-t">
+    <footer className="footer-canvas border-footer-border text-footer-foreground relative overflow-hidden border-t">
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-16 pb-7 sm:px-8 sm:pt-20 lg:px-12">
         <div className="border-footer-border grid gap-12 border-b pb-12 md:grid-cols-2 lg:grid-cols-[1.5fr_0.7fr_0.8fr_1.1fr] lg:gap-10 xl:gap-14">
           <div>

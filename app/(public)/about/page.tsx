@@ -62,8 +62,10 @@ export default function AboutPage() {
                   "mt-8",
                 )}
               >
-                <Download className="h-4 w-4" aria-hidden="true" />
-                Download resume
+                <span className="relative z-[1] inline-flex items-center gap-2">
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  Download resume
+                </span>
               </a>
             </Reveal>
           </div>

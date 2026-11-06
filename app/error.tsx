@@ -32,7 +32,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
           Try again
         </Button>
         <Link href="/" className={cn(buttonVariants({ variant: "outline" }))}>
-          Return home
+          <span className="relative z-[1]">Return home</span>
         </Link>
       </div>
     </Container>

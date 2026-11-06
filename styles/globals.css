@@ -42,6 +42,7 @@
 }
 
 :root {
+  color-scheme: light;
   --background: #f6f8fc;
   --foreground: #070d15;
   --surface: #ffffff;
@@ -65,9 +66,12 @@
   --footer-muted: #93a8be;
   --footer-border: #1a2a3a;
   --footer-accent: #3ca2fa;
+  --gallery-overlay: #070d15;
+  --gallery-overlay-foreground: #f4f8fd;
 }
 
 .dark {
+  color-scheme: dark;
   --background: #090d13;
   --foreground: #f4f8fd;
   --surface: #0d141d;
@@ -91,6 +95,8 @@
   --footer-muted: #8ea4ba;
   --footer-border: #172433;
   --footer-accent: #3ca2fa;
+  --gallery-overlay: #070d15;
+  --gallery-overlay-foreground: #f4f8fd;
 }
 
 @layer base {
@@ -146,6 +152,51 @@
 }
 
 @layer utilities {
+  .flow-fill-button {
+    --flow-fill: var(--primary-foreground);
+    --flow-hover-text: var(--primary);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .flow-fill-button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    background: var(--flow-fill);
+    transform: translate(-50%, 50%) scale(0);
+    transform-origin: center;
+    pointer-events: none;
+    transition: transform 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .flow-fill-button > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .flow-fill-button:hover,
+  .flow-fill-button:focus-visible {
+    color: var(--flow-hover-text);
+  }
+
+  .flow-fill-button:hover::before,
+  .flow-fill-button:focus-visible::before {
+    transform: translate(-50%, 50%) scale(18);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flow-fill-button::before {
+      transition: none;
+    }
+  }
+
   .site-canvas {
     background-color: var(--background);
     background-image:
@@ -163,17 +214,6 @@
 
   .footer-canvas {
     background-color: var(--footer);
-    background-image:
-      radial-gradient(
-        125% 125% at 50% 10%,
-        color-mix(in srgb, var(--footer) 88%, transparent) 42%,
-        color-mix(in srgb, var(--footer-accent) 22%, transparent) 100%
-      ),
-      radial-gradient(
-        60rem 34rem at 50% 110%,
-        color-mix(in srgb, var(--footer-accent) 16%, transparent),
-        transparent 70%
-      );
   }
 
   .reveal-footer {
@@ -300,6 +340,10 @@
   .mobile-menu-in {
     animation: mobile-menu-in 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
+
+  .menu-link-enter {
+    animation: menu-link-enter 650ms cubic-bezier(0.19, 1, 0.22, 1) both;
+  }
 }
 
 @keyframes hero-rise {
@@ -318,6 +362,18 @@
   from {
     opacity: 0;
     transform: translateY(-8px);
+  }
+
+  @keyframes menu-link-enter {
+    from {
+      opacity: 0;
+      transform: translateX(1.5rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   to {
