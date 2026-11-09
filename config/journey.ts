@@ -7,14 +7,14 @@ export const journeyMilestones = [
   },
   {
     year: "2025",
-    title: "Building real-world frontend projects",
+    title: "Building independent frontend projects",
     description:
-      "Developed responsive projects including a user directory, BBC News clone, and restaurant landing page. Practiced API integration, DOM manipulation, and responsive layouts.",
+      "Developed responsive website concepts and interactive React interfaces, including restaurant and salon experiences, a course catalogue, a simulated account dashboard, and a notes application.",
   },
   {
     year: "2026",
-    title: "Deepening frontend expertise",
+    title: "Developing portfolio applications",
     description:
-      "Continuing BSCS (4th semester) while expanding skills in React, Next.js, Tailwind CSS, and building a full-stack portfolio with Supabase and Prisma.",
+      "Expanded practical React and Next.js work across route states, reusable components, responsive galleries, navigation, theme behavior, and contact functionality.",
   },
 ];

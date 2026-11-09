@@ -2,9 +2,11 @@ export type Project = {
   slug: string;
   title: string;
   category?: string;
+  projectType: string;
   description: string;
   problem?: string;
   solution?: string;
+  functionality?: string[];
   technologies: string[];
   githubUrl?: string;
   demoUrl?: string;
@@ -17,12 +19,19 @@ export const projects: Project[] = [
     slug: "aaira-khan-salon-studio",
     title: "Aaira Khan Salon & Studio",
     category: "Salon website",
+    projectType: "Independent website concept",
     description:
-      "A responsive salon website designed to bring service discovery, promotional offers, portfolio galleries, customer testimonials, and appointment inquiries into one cohesive digital experience.",
+      "An independently developed salon website concept for presenting services, offers, galleries, business information, and appointment inquiries.",
     problem:
       "Customers needed a convenient way to explore salon services, view its work, find essential business information, and inquire about appointments without navigating multiple platforms.",
     solution:
-      "Developed a responsive Next.js website with organized service and offer sections, an image gallery, testimonials, location information, and direct WhatsApp appointment inquiries.",
+      "Built a responsive Next.js interface with organized service and offer sections, an image gallery, location information, and direct WhatsApp inquiry links.",
+    functionality: [
+      "Browse salon services and promotional offers",
+      "View portfolio imagery and business information",
+      "Open direct external WhatsApp appointment inquiries",
+      "Use the concept responsively across mobile and desktop layouts",
+    ],
     technologies: [
       "Next.js",
       "React",
@@ -40,12 +49,19 @@ export const projects: Project[] = [
     slug: "fast-and-furious-cafe",
     title: "Fast & Furious Cafe",
     category: "Restaurant website",
+    projectType: "Independent website concept",
     description:
-      "A responsive restaurant website built to make menu browsing, deal discovery, business information, and online ordering more accessible.",
+      "An independently developed restaurant website concept with a static menu, deals, business information, location details, and external ordering access.",
     problem:
       "Customers had to navigate separate platforms to explore the cafe's menu, discover deals, find its location, and access ordering options.",
     solution:
-      "Created a responsive Next.js website with a structured menu, deals, restaurant information, location details, and an external Foodpanda ordering destination.",
+      "Created a responsive Next.js interface with a structured menu, deals, restaurant information, location details, and Foodpanda as an external ordering destination.",
+    functionality: [
+      "Browse static menu items and deals",
+      "View restaurant and location information",
+      "Contact the restaurant through available channels",
+      "Continue ordering through Foodpanda, an external service",
+    ],
     technologies: [
       "Next.js",
       "React",
@@ -63,12 +79,19 @@ export const projects: Project[] = [
     slug: "learnhub",
     title: "LearnHub",
     category: "Learning platform",
+    projectType: "Frontend project",
     description:
-      "A responsive learning platform interface featuring course discovery, course details, reusable layouts, and structured navigation.",
+      "A frontend course catalogue that demonstrates route-based course discovery, course detail navigation, and clear loading, error, and not-found states.",
     problem:
       "A learning platform requires an organized interface through which users can discover courses, explore course information, and navigate between different sections with clear feedback.",
     solution:
       "Built a multi-route Next.js application featuring a course catalogue, course detail pages, shared layouts, and dedicated loading, error, and not-found states.",
+    functionality: [
+      "Browse a course catalogue",
+      "Navigate to individual course detail routes",
+      "Use shared layouts and route-based navigation",
+      "View loading, error, and not-found application states",
+    ],
     technologies: [
       "Next.js",
       "React",
@@ -86,12 +109,19 @@ export const projects: Project[] = [
     slug: "bank-account-manager",
     title: "Bank Account Manager",
     category: "Banking dashboard",
+    projectType: "Frontend simulation",
     description:
-      "An interactive banking dashboard for managing multiple accounts, performing transactions, and monitoring account balances through a component-based React interface.",
+      "A simulated banking interface using mock account data to demonstrate account selection, balance updates, transfers, and transaction history.",
     problem:
       "Managing multiple accounts and tracking transactions requires a clear interface that keeps account information and transaction activity organized.",
     solution:
       "Implemented account selection, credit and debit operations, account-to-account transfers, dynamic balance updates, and transaction history using React state and reusable components.",
+    functionality: [
+      "Select between mock accounts",
+      "Apply simulated credit and debit actions",
+      "Transfer amounts between demo accounts",
+      "Review dynamically updated balances and transaction history",
+    ],
     technologies: [
       "React",
       "JavaScript",
@@ -110,12 +140,19 @@ export const projects: Project[] = [
     slug: "notecraft-notes-app",
     title: "NoteCraft — Notes App",
     category: "Notes application",
+    projectType: "Frontend project",
     description:
       "A responsive notes management application that allows users to create, view, and delete notes through an interactive interface.",
     problem:
       "Users need a straightforward workspace to organize written notes and manage them without repeatedly reloading the interface.",
     solution:
       "Developed a React-based notes interface with controlled inputs, dynamic note creation, deletion, conditional rendering, and responsive layouts.",
+    functionality: [
+      "Create notes through controlled form inputs",
+      "View notes in a dynamic list",
+      "Delete individual notes",
+      "Manage notes during the current app session",
+    ],
     technologies: [
       "React",
       "JavaScript",

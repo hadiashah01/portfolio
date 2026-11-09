@@ -10,13 +10,12 @@ import { aboutPageContent, personal } from "@/config/personal";
 
 export const metadata = buildMetadata({
   title: "About",
-  description: "Learn about background, focus areas, and career goals.",
+  description: "Frontend development approach, practical skills, and responsive web interface experience.",
   path: "/about",
 });
 
 const profileRows = [
   { label: "Based in", value: personal.location },
-  { label: "Education", value: personal.education },
   { label: "Email", value: personal.email },
 ];
 

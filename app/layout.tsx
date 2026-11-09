@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { buildMetadata, siteViewport } from "@/config/metadata";
@@ -39,6 +40,7 @@ export default function RootLayout({
           <style>{`.scroll-reveal-word { opacity: 1 !important; transform: none !important; }`}</style>
         </noscript>
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

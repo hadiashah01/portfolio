@@ -6,8 +6,8 @@ import { journeyPageContent, personal } from "@/config/personal";
 import { journeyMilestones } from "@/config/journey";
 
 export const metadata = buildMetadata({
-  title: "Learning Journey",
-  description: "Milestones and continuous learning progress over time.",
+  title: "Development Journey",
+  description: "Education and practical frontend development milestones across React, Next.js, and responsive web projects.",
   path: "/journey",
 });
 

@@ -48,7 +48,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <>
       <Section containerSize="lg" className="pt-16 pb-16 sm:pt-24 sm:pb-20">
         <PageIntro
-          eyebrow={project.featured ? "Featured project" : "Project"}
+          eyebrow={project.projectType}
           title={project.title}
           description={project.description}
           meta={project.technologies.join(" / ")}

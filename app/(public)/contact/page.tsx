@@ -8,7 +8,7 @@ import { ContactForm } from "@/components/forms/ContactForm";
 
 export const metadata = buildMetadata({
   title: "Contact",
-  description: "Get in touch through the contact form or professional links.",
+  description: "Contact Hadia Shahjahan about frontend developer opportunities, remote roles, freelance projects, or collaborations.",
   path: "/contact",
 });
 
@@ -37,7 +37,7 @@ export default function ContactPage() {
 
         <div className="min-w-0 lg:col-span-7">
           <Reveal delay={80}>
-            <div className="border-border bg-surface rounded-xl border p-6 sm:p-8">
+            <div className="border-border bg-surface rounded-lg border p-6 sm:p-8">
               <h2 className="text-foreground text-2xl font-semibold tracking-[-0.035em]">
                 {contactPageContent.formTitle}
               </h2>

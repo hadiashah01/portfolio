@@ -26,6 +26,10 @@
   --color-footer-muted: var(--footer-muted);
   --color-footer-border: var(--footer-border);
   --color-footer-accent: var(--footer-accent);
+  --color-cta: var(--cta);
+  --color-cta-foreground: var(--cta-foreground);
+  --color-cta-muted: var(--cta-muted);
+  --color-cta-accent: var(--cta-accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --text-display: clamp(3.25rem, 8.2vw, 7.75rem);
@@ -66,6 +70,10 @@
   --footer-muted: #93a8be;
   --footer-border: #1a2a3a;
   --footer-accent: #3ca2fa;
+  --cta: #06101b;
+  --cta-foreground: #f3f8ff;
+  --cta-muted: #93a8be;
+  --cta-accent: #3ca2fa;
   --gallery-overlay: #070d15;
   --gallery-overlay-foreground: #f4f8fd;
 }
@@ -95,6 +103,10 @@
   --footer-muted: #8ea4ba;
   --footer-border: #172433;
   --footer-accent: #3ca2fa;
+  --cta: #05080d;
+  --cta-foreground: #f4f8ff;
+  --cta-muted: #8fa4ba;
+  --cta-accent: #3ca2fa;
   --gallery-overlay: #070d15;
   --gallery-overlay-foreground: #f4f8fd;
 }
@@ -214,6 +226,21 @@
 
   .footer-canvas {
     background-color: var(--footer);
+  }
+
+  .cta-canvas {
+    background-color: var(--cta);
+    background-image:
+      radial-gradient(
+        90rem 54rem at 50% -8%,
+        color-mix(in srgb, var(--cta-accent) 20%, transparent),
+        transparent 66%
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--cta-accent) 5%, transparent) 0%,
+        transparent 32%
+      );
   }
 
   .reveal-footer {

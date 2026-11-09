@@ -2,7 +2,7 @@ export const personal = {
   name: "Hadia Shahjahan",
   professionalTitle: "Frontend Developer",
   tagline:
-    "I build thoughtful, accessible interfaces and polished web experiences with modern frontend tools.",
+    "Frontend developer building responsive, accessible web interfaces with React, Next.js, and modern CSS.",
   location: "Sialkot, Punjab, Pakistan",
   email: "hadiashah010@gmail.com",
   phone: "+92 334 7042123",
@@ -10,13 +10,12 @@ export const personal = {
   linkedin: "https://www.linkedin.com/in/hadia-shahjahan",
   resumePath: "/assets/My_Resume.docx",
   availability: "Open to frontend development opportunities",
-  education: "BSCS (2nd Year • 4th Semester) - Virtual University of Pakistan",
   intro:
-    "I am a Sialkot-based frontend developer currently pursuing a BSCS (2nd Year, 4th Semester) at the Virtual University of Pakistan. I build responsive, accessible web interfaces using HTML5, CSS3, JavaScript, React, Tailwind CSS, and Bootstrap. My focus is on turning UI designs into clean, semantic code while applying web accessibility standards and maintainable component design.",
+    "I build responsive frontend experiences with React, Next.js, JavaScript, and Tailwind CSS. My work focuses on clear information architecture, semantic implementation, responsive behavior, and interfaces that remain usable across screen sizes and input methods.",
   currentFocus: [
     "Building polished, responsive interfaces with React and Next.js",
-    "Practicing responsive design using modern layouts like Flexbox and Grid",
-    "Ensuring accessibility standards across web components",
+    "Applying responsive layouts through Flexbox, Grid, and component-based styling",
+    "Implementing accessible interactions and clear interface states",
   ],
   technicalInterests: [
     "React",
@@ -27,7 +26,7 @@ export const personal = {
     "Accessibility",
   ],
   learningPhilosophy:
-    "I learn best by building real products, iterating carefully, and practicing core frontend skills through project recreation and cloning.",
+    "Strong interface work comes from clear structure, careful implementation, and repeated attention to responsive and accessible details.",
   skills: [
     "HTML5",
     "CSS3",
@@ -43,9 +42,9 @@ export const personal = {
 
 export const homePageContent = {
   heroEyebrow: "Frontend Developer",
-  heroTitle: "Crafting thoughtful interfaces with clarity and care",
+  heroTitle: "Frontend interfaces built for clarity and usability",
   heroDescription:
-    "I build accessible, responsive experiences that balance clean implementation with polished design.",
+    "I build responsive web experiences with React, Next.js, and modern CSS, with practical attention to accessibility and interface structure.",
   primaryCtaLabel: "View Projects",
   secondaryCtaLabel: "Contact Me",
   currentFocusTitle: "Current focus",
@@ -54,60 +53,60 @@ export const homePageContent = {
   featuredProjectsEyebrow: "Featured work",
   featuredProjectsTitle: "Selected projects",
   featuredProjectsDescription:
-    "A snapshot of work that reflects how I approach layout precision, frontend craft, and project recreation.",
+    "Independent projects that demonstrate responsive layouts, interaction design, and thoughtful frontend implementation.",
   skillsEyebrow: "Skills overview",
   skillsTitle: "Tools and strengths",
   skillsDescription:
-    "I enjoy building interfaces with a mix of practical implementation and clean styles.",
-  journeyEyebrow: "Learning journey",
-  journeyTitle: "Milestones and momentum",
+    "Practical frontend technologies applied across responsive interfaces and interactive experiences.",
+  journeyEyebrow: "Professional journey",
+  journeyTitle: "Development milestones",
   journeyDescription:
-    "Academic learning combined with hands-on practice building clones and dynamic applications.",
+    "Academic background and practical project work that shaped my frontend development direction.",
   ctaEyebrow: "Ready to connect?",
   ctaTitle: "Let’s build something together.",
   ctaDescription:
-    "I’m interested in frontend development opportunities, collaborative work, and projects where I can ship clean code.",
+    "Open to frontend development opportunities, remote roles, freelance website projects, and professional collaborations.",
   ctaLinkLabel: "Start a Conversation",
 };
 
 export const aboutPageContent = {
   eyebrow: "About",
-  title: "A focused developer with a core frontend background",
+  title: "Frontend development with a practical, user-focused approach",
   description:
-    "I care about making digital experiences feel easy to use, visually coherent, and responsive.",
+    "I turn interface requirements into responsive, accessible, and maintainable frontend experiences.",
   quickProfileTitle: "Quick profile",
   quickProfileDescription:
     "Based in Sialkot, Punjab, Pakistan. Open to frontend development opportunities.",
   currentFocusTitle: "Current focus",
   technicalInterestsTitle: "Technical interests",
-  learningPhilosophyTitle: "Learning philosophy",
+  learningPhilosophyTitle: "Working approach",
 };
 
 export const projectsPageContent = {
   eyebrow: "Projects",
   title: "Selected work",
   description:
-    "Each project below highlights the problem, the solution, and the lessons learned in my development process.",
+    "Independent frontend projects showing responsive implementation, interaction patterns, and interface structure.",
 };
 
 export const journeyPageContent = {
   eyebrow: "Journey",
-  title: "How the work has evolved",
+  title: "Development journey",
   description:
-    "My journey is shaped by structured academic learning combined with continuous hands-on cloning and project practice.",
+    "A focused timeline of education and frontend projects that demonstrate practical implementation experience.",
   currentDirectionTitle: "Current direction",
   currentDirectionDescription:
-    "Pursuing my BSCS degree while building responsive layouts and expanding my frontend skills.",
+    "Building responsive interfaces and expanding practical experience across React and Next.js.",
 };
 
 export const contactPageContent = {
   eyebrow: "Contact",
-  title: "Let’s talk",
+  title: "Start a conversation",
   description:
-    "Whether it’s a project idea, a job conversation, or a collaboration request, I’d be glad to connect.",
+    "For frontend opportunities, remote roles, freelance website projects, or professional collaborations, use the form or contact me directly.",
   reachOutTitle: "Reach out",
   reachOutDescription:
-    "I typically reply within a few days and enjoy discussing frontend development.",
+    "Messages are reviewed directly. Include the role, project scope, timeline, or collaboration area that you would like to discuss.",
   formTitle: "Contact form",
   formDescription: "Fill out the form below to send a message directly to my inbox.",
   nameLabel: "Name",

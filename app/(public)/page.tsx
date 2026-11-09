@@ -32,8 +32,8 @@ export default function HomePage() {
         className="pt-14 pb-20 sm:pt-20 sm:pb-28 lg:pt-24"
         aria-labelledby="hero-heading"
       >
-        <div className="grid gap-12 lg:min-h-[calc(100svh-14rem)] lg:grid-cols-12 lg:items-center lg:gap-8">
-          <div className="lg:col-span-8">
+        <div className="grid min-w-0 gap-12 lg:min-h-[calc(100svh-14rem)] lg:grid-cols-12 lg:items-center lg:gap-8">
+          <div className="min-w-0 lg:col-span-8">
             <Reveal>
               <p className="text-primary flex items-center gap-3 text-base font-medium">
                 <span
@@ -46,7 +46,7 @@ export default function HomePage() {
               <h1
                 id="hero-heading"
                 aria-label={personal.name}
-                className="text-display text-foreground mt-8 font-black uppercase"
+                className="text-[2.75rem] text-foreground mt-8 font-black uppercase min-[360px]:text-display"
               >
                 <span className="block">{firstName}</span>
                 <span className="brand-text block">{lastName}</span>
@@ -233,21 +233,21 @@ export default function HomePage() {
 
       <Section>
         <Reveal>
-          <div className="footer-canvas text-footer-foreground relative overflow-hidden rounded-[2rem] px-6 py-14 sm:px-10 sm:py-16 lg:px-14">
+          <div className="cta-canvas text-cta-foreground relative overflow-hidden rounded-[2rem] px-6 py-14 sm:px-10 sm:py-16 lg:px-14">
             <div className="max-w-4xl">
-              <p className="text-footer-muted text-sm font-medium">
+              <p className="text-cta-muted text-sm font-medium">
                 {homePageContent.ctaEyebrow}
               </p>
-              <h2 className="text-footer-foreground mt-4 text-4xl font-black tracking-[-0.055em] uppercase sm:text-5xl lg:text-6xl">
+              <h2 className="text-cta-foreground mt-4 text-4xl font-black tracking-[-0.055em] uppercase sm:text-5xl lg:text-6xl">
                 {homePageContent.ctaTitle}
               </h2>
-              <p className="text-footer-muted mt-5 max-w-xl text-base leading-7 sm:text-lg sm:leading-8">
+              <p className="text-cta-muted mt-5 max-w-xl text-base leading-7 sm:text-lg sm:leading-8">
                 {homePageContent.ctaDescription}
               </p>
               <Link
                 href="/contact"
                 className={cn(
-                  buttonVariants({ variant: "footer", size: "lg" }),
+                  buttonVariants({ variant: "cta", size: "lg" }),
                   "mt-8",
                 )}
               >

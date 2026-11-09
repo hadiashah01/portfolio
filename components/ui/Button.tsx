@@ -15,6 +15,8 @@ const buttonVariants = cva(
           "flow-fill-button group bg-primary text-primary-foreground border border-primary hover:text-primary hover:rounded-lg focus-visible:text-primary focus-visible:rounded-lg",
         footer:
           "flow-fill-button group bg-footer-foreground text-footer border border-footer-foreground [--flow-fill:var(--footer)] [--flow-hover-text:var(--footer-foreground)] hover:rounded-lg hover:text-footer-foreground focus-visible:rounded-lg focus-visible:text-footer-foreground",
+        cta:
+          "flow-fill-button group bg-cta-foreground text-cta border border-cta-foreground [--flow-fill:var(--cta)] [--flow-hover-text:var(--cta-foreground)] hover:rounded-lg hover:text-cta-foreground focus-visible:rounded-lg focus-visible:text-cta-foreground",
         secondary:
           "flow-fill-button group bg-foreground text-background border border-foreground [--flow-fill:var(--background)] [--flow-hover-text:var(--foreground)] hover:rounded-lg hover:text-foreground focus-visible:rounded-lg focus-visible:text-foreground",
         outline:

@@ -7,7 +7,7 @@ import { projectsPageContent } from "@/config/personal";
 
 export const metadata = buildMetadata({
   title: "Projects",
-  description: "Featured projects and case-study style project writeups.",
+  description: "Independent frontend projects built with React, Next.js, responsive design, and accessible interfaces.",
   path: "/projects",
 });
 

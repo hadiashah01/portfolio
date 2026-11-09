@@ -199,7 +199,7 @@ export function ProjectCard({
           )}
         >
           <p className="text-primary text-sm font-medium">
-            {project.featured ? "Featured project" : `Project ${projectNumber}`}
+            {project.projectType}
           </p>
 
           <ProjectHeading
@@ -212,6 +212,10 @@ export function ProjectCard({
             {project.description}
           </p>
 
+          <p className="text-primary mt-4 text-sm font-medium">
+            {project.projectType}
+          </p>
+
           {project.problem || project.solution ? (
             <dl className="mt-6 space-y-5">
               {project.problem ? (
@@ -222,6 +226,24 @@ export function ProjectCard({
                   <dd className="text-muted-foreground mt-1.5 text-sm leading-7">
                     {project.problem}
                   </dd>
+                </div>
+              ) : null}
+
+              {project.functionality?.length ? (
+                <div className="mt-6">
+                  <h3 className="text-foreground text-sm font-semibold">
+                    Implemented functionality
+                  </h3>
+                  <ul className="mt-2 space-y-2">
+                    {project.functionality.map((item) => (
+                      <li
+                        key={item}
+                        className="text-muted-foreground text-sm leading-7 before:text-primary before:mr-2 before:content-['•']"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ) : null}
               {project.solution ? (
@@ -258,7 +280,7 @@ export function ProjectCard({
       <div className="mt-5 flex items-start justify-between gap-5">
         <div>
           <p className="text-primary text-sm font-medium">
-            {project.featured ? "Featured project" : "Project"}
+            {project.projectType}
           </p>
           <ProjectHeading
             id={headingId}
@@ -339,7 +361,7 @@ export function ExpandableProjectGallery({
               />
             ) : null}
 
-            <div className="absolute inset-x-0 bottom-0 z-[11] bg-[var(--gallery-overlay)]/90 px-5 pt-5 pb-5 text-[var(--gallery-overlay-foreground)] lg:px-6 lg:pb-6"            >
+            <div className="absolute inset-x-0 bottom-0 z-[11] bg-[var(--gallery-overlay)]/90 px-5 pt-5 pb-5 text-[var(--gallery-overlay-foreground)] lg:px-6 lg:pb-6">
               <p
                 className={cn(
                   "text-xs font-medium text-white/75 uppercase transition-opacity duration-500",
