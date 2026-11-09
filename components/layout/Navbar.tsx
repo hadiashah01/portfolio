@@ -52,7 +52,7 @@ export function Navbar() {
             href="/contact"
             className={cn(
               buttonVariants({ variant: "primary", size: "sm" }),
-              "hidden md:inline-flex hover:text-primary focus-visible:text-primary",
+              "hidden md:inline-flex",
             )}
           >
             <span className="relative z-[1]">Let&apos;s talk</span>

@@ -28,7 +28,7 @@ export function CardHeader({ className, ...props }: CardHeaderProps) {
 }
 
 export type CardTitleProps = HTMLAttributes<HTMLHeadingElement> & {
-  as?: "h2" | "h3";
+  as?: "h1" | "h2" | "h3";
 };
 
 export function CardTitle({

@@ -212,10 +212,6 @@ export function ProjectCard({
             {project.description}
           </p>
 
-          <p className="text-primary mt-4 text-sm font-medium">
-            {project.projectType}
-          </p>
-
           {project.problem || project.solution ? (
             <dl className="mt-6 space-y-5">
               {project.problem ? (

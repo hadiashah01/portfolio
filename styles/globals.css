@@ -172,6 +172,26 @@
     overflow: hidden;
   }
 
+  .button-footer {
+    --flow-fill: var(--footer);
+    --flow-hover-text: var(--footer-foreground);
+  }
+
+  .button-cta {
+    --flow-fill: var(--cta);
+    --flow-hover-text: var(--cta-foreground);
+  }
+
+  .button-secondary {
+    --flow-fill: var(--background);
+    --flow-hover-text: var(--foreground);
+  }
+
+  .button-danger {
+    --flow-fill: var(--surface);
+    --flow-hover-text: var(--error);
+  }
+
   .flow-fill-button::before {
     content: "";
     position: absolute;
@@ -185,7 +205,7 @@
     transform: translate(-50%, 50%) scale(0);
     transform-origin: center;
     pointer-events: none;
-    transition: transform 800ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
   }
 
   .flow-fill-button > * {

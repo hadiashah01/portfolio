@@ -16,7 +16,9 @@ export default function LoginPage() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader className="border-b border-border pb-4">
-        <CardTitle className="text-2xl">Admin Login</CardTitle>
+        <CardTitle as="h1" className="text-2xl">
+          Admin Login
+        </CardTitle>
         <CardDescription>
           Sign in to manage contact submissions and message queries.
         </CardDescription>

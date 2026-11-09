@@ -14,18 +14,18 @@ const buttonVariants = cva(
         flow:
           "flow-fill-button group bg-primary text-primary-foreground border border-primary hover:text-primary hover:rounded-lg focus-visible:text-primary focus-visible:rounded-lg",
         footer:
-          "flow-fill-button group bg-footer-foreground text-footer border border-footer-foreground [--flow-fill:var(--footer)] [--flow-hover-text:var(--footer-foreground)] hover:rounded-lg hover:text-footer-foreground focus-visible:rounded-lg focus-visible:text-footer-foreground",
+          "flow-fill-button button-footer group bg-footer-foreground text-footer border border-footer-foreground hover:rounded-lg hover:text-footer-foreground focus-visible:rounded-lg focus-visible:text-footer-foreground",
         cta:
-          "flow-fill-button group bg-cta-foreground text-cta border border-cta-foreground [--flow-fill:var(--cta)] [--flow-hover-text:var(--cta-foreground)] hover:rounded-lg hover:text-cta-foreground focus-visible:rounded-lg focus-visible:text-cta-foreground",
+          "flow-fill-button button-cta group bg-cta-foreground text-cta border border-cta-foreground hover:rounded-lg hover:text-cta-foreground focus-visible:rounded-lg focus-visible:text-cta-foreground",
         secondary:
-          "flow-fill-button group bg-foreground text-background border border-foreground [--flow-fill:var(--background)] [--flow-hover-text:var(--foreground)] hover:rounded-lg hover:text-foreground focus-visible:rounded-lg focus-visible:text-foreground",
+          "flow-fill-button button-secondary group bg-foreground text-background border border-foreground hover:rounded-lg hover:text-foreground focus-visible:rounded-lg focus-visible:text-foreground",
         outline:
           "border border-border bg-transparent text-foreground hover:border-foreground/30 hover:bg-muted/60",
         ghost: "bg-transparent text-foreground hover:bg-muted",
         text: "bg-transparent px-0 text-primary underline-offset-4 hover:underline",
         icon: "bg-transparent text-foreground hover:bg-muted",
         danger:
-          "flow-fill-button group bg-error text-white border border-error [--flow-fill:var(--surface)] [--flow-hover-text:var(--error)] hover:rounded-lg hover:text-error focus-visible:rounded-lg focus-visible:text-error",
+          "flow-fill-button button-danger group bg-error text-white border border-error hover:rounded-lg hover:text-error focus-visible:rounded-lg focus-visible:text-error",
       },
       size: {
         sm: "h-9 px-4 text-[13px]",
