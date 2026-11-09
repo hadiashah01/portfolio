@@ -167,9 +167,6 @@
   .flow-fill-button {
     --flow-fill: var(--primary-foreground);
     --flow-hover-text: var(--primary);
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
   }
 
   .button-footer {
@@ -192,41 +189,10 @@
     --flow-hover-text: var(--error);
   }
 
-  .flow-fill-button::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 0;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 9999px;
-    background: var(--flow-fill);
-    transform: translate(-50%, 50%) scale(0);
-    transform-origin: center;
-    pointer-events: none;
-    transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
-  }
-
-  .flow-fill-button > * {
-    position: relative;
-    z-index: 1;
-  }
-
   .flow-fill-button:hover,
   .flow-fill-button:focus-visible {
+    background-color: var(--flow-fill);
     color: var(--flow-hover-text);
-  }
-
-  .flow-fill-button:hover::before,
-  .flow-fill-button:focus-visible::before {
-    transform: translate(-50%, 50%) scale(18);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .flow-fill-button::before {
-      transition: none;
-    }
   }
 
   .site-canvas {
