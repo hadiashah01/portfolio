@@ -8,7 +8,7 @@ export const personal = {
   phone: "+92 334 7042123",
   github: "https://github.com/hadiashah01",
   linkedin: "https://www.linkedin.com/in/hadia-shahjahan",
-  resumePath: "/assets/My_Resume.docx",
+  resumePath: "/assets/My_Resume.pdf",
   availability: "Open to frontend development opportunities",
   intro:
     "I build responsive frontend experiences with React, Next.js, JavaScript, and Tailwind CSS. My work focuses on clear information architecture, semantic implementation, responsive behavior, and interfaces that remain usable across screen sizes and input methods.",
@@ -108,7 +108,8 @@ export const contactPageContent = {
   reachOutDescription:
     "Messages are reviewed directly. Include the role, project scope, timeline, or collaboration area that you would like to discuss.",
   formTitle: "Contact form",
-  formDescription: "Fill out the form below to send a message directly to my inbox.",
+  formDescription:
+    "Fill out the form below to send a message directly to my inbox.",
   nameLabel: "Name",
   emailLabel: "Email",
   subjectLabel: "Subject",
