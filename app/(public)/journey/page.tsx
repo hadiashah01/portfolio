@@ -7,7 +7,8 @@ import { journeyMilestones } from "@/config/journey";
 
 export const metadata = buildMetadata({
   title: "Development Journey",
-  description: "Education and practical frontend development milestones across React, Next.js, and responsive web projects.",
+  description:
+    "Education and project milestones in Hadia Shahjahan's frontend development journey.",
   path: "/journey",
 });
 

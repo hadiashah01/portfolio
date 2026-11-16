@@ -6,9 +6,11 @@ export const siteConfig = {
   description: personal.tagline,
   keywords: [
     "frontend developer",
+    "freelance web developer Sialkot",
+    "small business websites",
+    "react",
     "next.js",
     "typescript",
-    "react",
     "tailwind css",
     "bootstrap",
     "HTML5",

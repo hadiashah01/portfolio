@@ -6,7 +6,7 @@ import { buttonVariants } from "@/components/ui/Button";
 import {
   SectionHeading,
   TimelineItem,
-  ExpandableProjectGallery,
+  ProjectCard,
 } from "@/components/sections";
 import { Reveal } from "@/components/motion";
 import { cn } from "@/utils/cn";
@@ -53,7 +53,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-muted-foreground mt-8 max-w-2xl text-lg leading-8 sm:text-xl sm:leading-9">
-                {personal.tagline}
+                {homePageContent.heroDescription}
               </p>
 
               <div className="mt-10 flex flex-wrap items-center gap-6">
@@ -172,7 +172,18 @@ export default function HomePage() {
         </div>
 
         <Reveal>
-          <ExpandableProjectGallery projects={featuredProjects} />
+          <div className="mt-12 grid gap-x-8 gap-y-14 md:grid-cols-2">
+            {featuredProjects.map((project, index) => (
+              <ProjectCard
+                key={project.slug}
+                project={project}
+                index={index}
+                variant="featured"
+                headingLevel="h3"
+                priority={index < 2}
+              />
+            ))}
+          </div>
         </Reveal>
       </Section>
 

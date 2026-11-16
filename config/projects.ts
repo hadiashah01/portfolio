@@ -21,16 +21,16 @@ export const projects: Project[] = [
     category: "Salon website",
     projectType: "Independent website concept",
     description:
-      "An independently developed salon website concept for presenting services, offers, galleries, business information, and appointment inquiries.",
+      "A salon website that brings services, offers, and portfolio photos into one place, with appointment inquiries sent straight to WhatsApp.",
     problem:
-      "Customers needed a convenient way to explore salon services, view its work, find essential business information, and inquire about appointments without navigating multiple platforms.",
+      "Customers had to check services, view the salon's work, find business details, and ask about appointments across separate platforms.",
     solution:
-      "Built a responsive Next.js interface with organized service and offer sections, an image gallery, location information, and direct WhatsApp inquiry links.",
+      "A responsive Next.js site with organized service and offer sections, an image gallery, location details, and direct WhatsApp inquiry links.",
     functionality: [
-      "Browse salon services and promotional offers",
-      "View portfolio imagery and business information",
-      "Open direct external WhatsApp appointment inquiries",
-      "Use the concept responsively across mobile and desktop layouts",
+      "Browse services and current offers",
+      "View gallery photos and business information",
+      "Start appointment inquiries on WhatsApp",
+      "Layouts that adapt to phones and desktops",
     ],
     technologies: [
       "Next.js",
@@ -51,16 +51,16 @@ export const projects: Project[] = [
     category: "Restaurant website",
     projectType: "Independent website concept",
     description:
-      "An independently developed restaurant website concept with a static menu, deals, business information, location details, and external ordering access.",
+      "A restaurant website that presents the menu, current deals, and location details on one page, with ordering handed off to Foodpanda.",
     problem:
-      "Customers had to navigate separate platforms to explore the cafe's menu, discover deals, find its location, and access ordering options.",
+      "Customers had to check the menu, deals, location, and ordering options across separate platforms.",
     solution:
-      "Created a responsive Next.js interface with a structured menu, deals, restaurant information, location details, and Foodpanda as an external ordering destination.",
+      "A responsive Next.js site with a structured menu, deals section, restaurant information, location details, and a link to order on Foodpanda.",
     functionality: [
-      "Browse static menu items and deals",
+      "Browse the menu and current deals",
       "View restaurant and location information",
-      "Contact the restaurant through available channels",
-      "Continue ordering through Foodpanda, an external service",
+      "Contact the restaurant through the listed channels",
+      "Continue ordering on Foodpanda, an external service",
     ],
     technologies: [
       "Next.js",
@@ -81,16 +81,16 @@ export const projects: Project[] = [
     category: "Learning platform",
     projectType: "Frontend project",
     description:
-      "A frontend course catalogue that demonstrates route-based course discovery, course detail navigation, and clear loading, error, and not-found states.",
+      "A course catalogue that shows how a learning site organises courses, course details, and route states like loading, error, and not found.",
     problem:
-      "A learning platform requires an organized interface through which users can discover courses, explore course information, and navigate between different sections with clear feedback.",
+      "A learning site needs a clear path from a course list to a single course page, with visible feedback while pages load or fail.",
     solution:
-      "Built a multi-route Next.js application featuring a course catalogue, course detail pages, shared layouts, and dedicated loading, error, and not-found states.",
+      "A multi-route Next.js app with a catalogue, course detail pages, shared layouts, and dedicated loading, error, and not-found states.",
     functionality: [
-      "Browse a course catalogue",
-      "Navigate to individual course detail routes",
-      "Use shared layouts and route-based navigation",
-      "View loading, error, and not-found application states",
+      "Browse a catalogue of courses",
+      "Open individual course pages by route",
+      "Share layouts across routes",
+      "See loading, error, and not-found states",
     ],
     technologies: [
       "Next.js",
@@ -111,16 +111,16 @@ export const projects: Project[] = [
     category: "Banking dashboard",
     projectType: "Frontend simulation",
     description:
-      "A simulated banking interface using mock account data to demonstrate account selection, balance updates, transfers, and transaction history.",
+      "A banking dashboard built on mock data to demonstrate account selection, transfers, balance updates, and transaction history.",
     problem:
-      "Managing multiple accounts and tracking transactions requires a clear interface that keeps account information and transaction activity organized.",
+      "Tracking several accounts and their transactions needs a layout that keeps balances and history readable as they change.",
     solution:
-      "Implemented account selection, credit and debit operations, account-to-account transfers, dynamic balance updates, and transaction history using React state and reusable components.",
+      "React components handle account selection, credit and debit actions, transfers between accounts, and a transaction log that updates with state.",
     functionality: [
-      "Select between mock accounts",
-      "Apply simulated credit and debit actions",
-      "Transfer amounts between demo accounts",
-      "Review dynamically updated balances and transaction history",
+      "Switch between mock accounts",
+      "Record simulated credits and debits",
+      "Transfer between demo accounts",
+      "Watch balances and history update live",
     ],
     technologies: [
       "React",
@@ -142,16 +142,16 @@ export const projects: Project[] = [
     category: "Notes application",
     projectType: "Frontend project",
     description:
-      "A responsive notes management application that allows users to create, view, and delete notes through an interactive interface.",
+      "A notes app where you can add, view, and delete notes in a single interface, with no page reloads.",
     problem:
-      "Users need a straightforward workspace to organize written notes and manage them without repeatedly reloading the interface.",
+      "Writing quick notes is only useful if adding and removing them takes a click or two.",
     solution:
-      "Developed a React-based notes interface with controlled inputs, dynamic note creation, deletion, conditional rendering, and responsive layouts.",
+      "A React interface with controlled inputs, a live list, delete actions, and responsive layouts, all held in component state.",
     functionality: [
-      "Create notes through controlled form inputs",
-      "View notes in a dynamic list",
+      "Add notes from a controlled form",
+      "See notes appear in a live list",
       "Delete individual notes",
-      "Manage notes during the current app session",
+      "Keep notes for the current session",
     ],
     technologies: [
       "React",

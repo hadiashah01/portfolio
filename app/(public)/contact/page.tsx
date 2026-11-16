@@ -8,7 +8,8 @@ import { ContactForm } from "@/components/forms/ContactForm";
 
 export const metadata = buildMetadata({
   title: "Contact",
-  description: "Contact Hadia Shahjahan about frontend developer opportunities, remote roles, freelance projects, or collaborations.",
+  description:
+    "Contact Hadia Shahjahan about website projects, frontend roles, remote work, or collaborations.",
   path: "/contact",
 });
 

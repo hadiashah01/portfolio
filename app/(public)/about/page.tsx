@@ -10,7 +10,8 @@ import { aboutPageContent, personal } from "@/config/personal";
 
 export const metadata = buildMetadata({
   title: "About",
-  description: "Frontend development approach, practical skills, and responsive web interface experience.",
+  description:
+    "About Hadia Shahjahan, a frontend developer in Sialkot building responsive websites with React, Next.js, and Tailwind CSS.",
   path: "/about",
 });
 

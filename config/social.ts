@@ -38,5 +38,5 @@ export const contactFormPlaceholders = {
   name: "Your name",
   email: "your@email.com",
   subject: "What do you want to discuss?",
-  message: "Share a few details about your idea or request.",
+  message: "Tell me about your project, role, or question.",
 };

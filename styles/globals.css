@@ -377,20 +377,20 @@
     transform: translateY(-8px);
   }
 
-  @keyframes menu-link-enter {
-    from {
-      opacity: 0;
-      transform: translateX(1.5rem);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+@keyframes menu-link-enter {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }

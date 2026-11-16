@@ -8,7 +8,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
-import { contactPageContent } from "@/config/personal";
+import { contactPageContent, personal } from "@/config/personal";
 import { contactFormPlaceholders } from "@/config/social";
 
 const contactFormSchema = z.object({
@@ -67,14 +67,14 @@ export function ContactForm() {
 
       setSubmitStatus({
         type: "success",
-        message: "Your message has been sent successfully!",
+        message: "Message sent. Thanks for reaching out.",
       });
       reset();
     } catch (err) {
       console.error(err);
       setSubmitStatus({
         type: "error",
-        message: "An unexpected error occurred. Please try again later.",
+        message: `Something went wrong. Please try again, or email me directly at ${personal.email}.`,
       });
     }
   };
